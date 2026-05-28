@@ -1,0 +1,505 @@
+/* Patel Clinic — connect hub, platform links & review CTAs */
+@import url("connect-crown.css");
+
+.connect-strip {
+  padding: 1rem 0 0;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, var(--muted) 0%, var(--bg) 100%);
+}
+
+.connect-strip__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+}
+
+.connect-strip__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.connect-strip__pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+.connect-strip__pill--all {
+  background: var(--primary);
+  color: #fff;
+  border-color: transparent;
+}
+
+.connect-strip__pill--all:hover {
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+}
+
+.connect-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.connect-icon--google {
+  background: #fff;
+  color: #4285f4;
+  border: 1px solid #e8eaed;
+}
+
+.connect-icon--justdial {
+  background: #ff6b00;
+  color: #fff;
+}
+
+.connect-icon--practo {
+  background: #28328c;
+  color: #fff;
+}
+
+.connect-icon--facebook {
+  background: #1877f2;
+  color: #fff;
+}
+
+.connect-icon--instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b, #8134af);
+  color: #fff;
+}
+
+.connect-icon--youtube {
+  background: #ff0000;
+  color: #fff;
+}
+
+.connect-icon--linkedin {
+  background: #0a66c2;
+  color: #fff;
+  font-size: 0.55rem;
+  letter-spacing: -0.02em;
+}
+
+.connect-icon--whatsapp {
+  background: #25d366;
+  color: #fff;
+}
+
+.connect-icon--phone {
+  background: var(--primary);
+  color: #fff;
+}
+
+.connect-icon--star {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.connect-icon--eka {
+  background: #0d9488;
+  color: #fff;
+}
+
+.connect-icon--magicpin {
+  background: #e11d48;
+  color: #fff;
+}
+
+.connect-icon--default {
+  background: var(--muted);
+  color: var(--text);
+}
+
+/* Connect hub */
+.connect-hub {
+  padding: var(--page-section-pad, clamp(4rem, 7vw, 6rem)) 0;
+}
+
+.connect-hub--home {
+  background: linear-gradient(180deg, #fff 0%, var(--muted) 100%);
+}
+
+.connect-hub--page {
+  padding-top: 0;
+}
+
+.connect-hub__head {
+  max-width: 42rem;
+  margin-bottom: 2.5rem;
+}
+
+.connect-hub__head h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  margin: 0.5rem 0 0.75rem;
+}
+
+.connect-hub__head p {
+  color: var(--muted-text);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.connect-hub__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.connect-hub__visual {
+  position: relative;
+  margin: 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.12);
+}
+
+.connect-hub__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.connect-hub__badge {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  margin: 0;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.connect-hub__badge span {
+  color: var(--primary);
+}
+
+.connect-hub__review {
+  padding: 1.25rem 1.35rem;
+  margin-bottom: 1.25rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  color: #fff;
+}
+
+.connect-hub__review h3 {
+  font-size: 1.125rem;
+  margin: 0.35rem 0 0.5rem;
+}
+
+.connect-hub__review p {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  margin: 0 0 1rem;
+  line-height: 1.55;
+}
+
+.connect-hub__review .connect-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.connect-hub__review .connect-card:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.connect-hub__review-secondary {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #93c5fd;
+}
+
+.connect-hub__group {
+  margin-bottom: 1.5rem;
+}
+
+.connect-hub__group h3 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted-text);
+  margin: 0 0 0.75rem;
+}
+
+.connect-hub__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.65rem;
+}
+
+.connect-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 0.85rem;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.connect-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.connect-card--featured {
+  border-color: rgba(37, 99, 235, 0.18);
+  background: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
+}
+
+.connect-card--review {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: linear-gradient(135deg, #fffbeb 0%, #fff 100%);
+}
+
+.connect-card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.connect-card__body strong {
+  font-size: 0.9375rem;
+}
+
+.connect-card__body span {
+  font-size: 0.75rem;
+  color: var(--muted-text);
+  line-height: 1.4;
+}
+
+.connect-card__arrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* Review CTA (testimonials) */
+.connect-review-cta {
+  margin: 0;
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 55%, #1d4ed8 100%);
+  color: #fff;
+}
+
+.connect-review-cta__inner {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 280px);
+  gap: 2rem;
+  align-items: center;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.connect-review-cta__copy h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin: 0.35rem 0 0.75rem;
+}
+
+.connect-review-cta__copy p {
+  opacity: 0.9;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.connect-review-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.connect-review-cta__actions .connect-card {
+  flex: 1 1 220px;
+  max-width: 320px;
+}
+
+.connect-review-cta__img {
+  margin: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  opacity: 0.95;
+}
+
+.connect-review-cta__img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+
+/* Footer connect row */
+.footer-connect {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-connect__label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+  margin: 0 0 0.65rem;
+}
+
+.footer-connect__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.footer-connect__icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.footer-connect__icon:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-connect__icon .connect-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  font-size: 0.6rem;
+}
+
+.footer-connect__icon span:last-child {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .footer-connect__icon span:last-child {
+    display: inline;
+  }
+}
+
+/* Homoeo products */
+.homoeo-products__head {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 2.5rem;
+}
+
+.homoeo-products__head h2 {
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  margin: 0.5rem 0 0.65rem;
+}
+
+.homoeo-products__head p {
+  color: var(--muted-text);
+  margin: 0;
+}
+
+.homoeo-products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.homoeo-product-card {
+  text-align: center;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
+
+.homoeo-product-card img {
+  width: min(200px, 100%);
+  height: auto;
+  margin: 0 auto 1rem;
+  display: block;
+}
+
+.homoeo-product-card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.35rem;
+}
+
+.homoeo-product-card p {
+  font-size: 0.8125rem;
+  color: var(--muted-text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .connect-hub__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .connect-hub__visual {
+    max-width: 22rem;
+    margin: 0 auto;
+  }
+
+  .connect-review-cta__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .connect-review-cta__img {
+    max-width: 14rem;
+    margin: 0 auto;
+    order: -1;
+  }
+}
+
+@media (max-width: 520px) {
+  .connect-hub__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .connect-card__arrow {
+    display: none;
+  }
+}

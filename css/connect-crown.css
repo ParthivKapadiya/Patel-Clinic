@@ -1,0 +1,642 @@
+/* Patel Clinic — home connect hub (MNC editorial layout) */
+
+.connect-crown-panel {
+  padding: clamp(1.35rem, 2.5vw, 2rem);
+  border-radius: clamp(1.35rem, 2.5vw, 1.75rem);
+  background: linear-gradient(165deg, #fff 0%, #fdfbf7 100%);
+  border: 1px solid rgba(201, 169, 98, 0.22);
+  box-shadow: 0 40px 90px -45px rgba(12, 18, 34, 0.18);
+}
+
+.connect-crown {
+  width: 100%;
+}
+
+/* Intro band — photo + review, full panel width */
+.connect-crown__intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .connect-crown__intro {
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+.connect-crown__intro-side {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.connect-crown__photo {
+  position: relative;
+  margin: 0;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  max-height: 360px;
+  box-shadow: 0 20px 48px -24px rgba(12, 18, 34, 0.22);
+}
+
+@media (min-width: 900px) {
+  .connect-crown__photo {
+    max-height: none;
+    min-height: 100%;
+  }
+}
+
+.connect-crown__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.connect-crown__photo figcaption {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  margin: 0;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+}
+
+/* Trust strip — full-width bar under intro */
+.connect-crown__trust-strip {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem 1.35rem;
+  margin-bottom: 1.75rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(165deg, var(--navy) 0%, #141d32 48%, #0c2830 100%);
+  border: 1px solid rgba(201, 169, 98, 0.28);
+  box-shadow: 0 20px 48px -24px rgba(12, 18, 34, 0.35);
+}
+
+@media (min-width: 768px) {
+  .connect-crown__trust-strip {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    column-gap: 1.5rem;
+    row-gap: 0.65rem;
+  }
+
+  .connect-crown__trust-strip-score {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  .connect-crown__trust-strip-tagline {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+  }
+
+  .connect-crown__trust-strip-actions {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .connect-crown__trust-strip-phones {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    border-top: none;
+    padding-top: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 1.25rem;
+  }
+}
+
+.connect-crown__trust-strip-score {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.connect-crown__score {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--gold, #c9a962);
+}
+
+.connect-crown__trust-strip-score div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.connect-crown__trust-strip-score strong {
+  font-size: 0.875rem;
+  color: #fff;
+}
+
+.connect-crown__trust-strip-score span {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.connect-crown__trust-strip-tagline {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0;
+}
+
+.connect-crown__trust-strip-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.connect-crown__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.15rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.connect-crown__btn:hover {
+  transform: translateY(-2px);
+}
+
+.connect-crown__btn--wa {
+  color: #fff;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  box-shadow: 0 12px 28px -10px rgba(37, 211, 102, 0.45);
+}
+
+.connect-crown__btn--wa svg,
+.connect-crown__btn--wa .connect-luxe__svg {
+  width: 1rem;
+  height: 1rem;
+  max-width: 1rem;
+  max-height: 1rem;
+  flex-shrink: 0;
+}
+
+.connect-crown__btn--book {
+  color: var(--navy);
+  background: linear-gradient(135deg, #e8d4b8, #c9a962);
+}
+
+.connect-crown__trust-strip-phones {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.connect-crown__trust-strip-phones a {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.connect-crown__trust-strip-phones a span:first-child {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a962);
+  width: 100%;
+}
+
+.connect-crown__trust-strip-phones a:hover {
+  color: #fff;
+}
+
+.connect-crown__review {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.5rem 1.35rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(145deg, #1a2848 0%, var(--navy) 100%);
+  border: 1px solid rgba(201, 169, 98, 0.28);
+  color: #fff;
+  box-shadow: 0 16px 40px -20px rgba(12, 18, 34, 0.35);
+}
+
+.connect-crown__review-eyebrow {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a962);
+  margin-bottom: 0.5rem;
+}
+
+.connect-crown__review h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+}
+
+.connect-crown__review p {
+  font-size: 0.8125rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 1.15rem;
+}
+
+.connect-crown__review-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.connect-crown__review-actions .connect-luxe__hero {
+  flex: 1;
+  min-width: min(100%, 220px);
+}
+
+.connect-crown__review-google {
+  align-self: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #93c5fd;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.connect-crown__review-google:hover {
+  color: #fff;
+}
+
+/* Directory */
+.connect-crown__directory {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.connect-crown__section {
+  padding-top: 1.35rem;
+  border-top: 1px solid rgba(12, 18, 34, 0.08);
+}
+
+.connect-crown__section:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.connect-crown__section-head {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.connect-crown__section-num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(12, 18, 34, 0.08);
+}
+
+.connect-crown__section-head h3 {
+  margin: 0;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a962);
+}
+
+.connect-crown__tiles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+@media (min-width: 560px) {
+  .connect-crown__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .connect-crown__tiles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .connect-crown__tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.connect-crown__tiles .connect-luxe__tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(12, 18, 34, 0.07);
+  background: #fff;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: 0 10px 28px -18px rgba(12, 18, 34, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.connect-crown__tiles .connect-luxe__tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 169, 98, 0.35);
+  box-shadow: 0 18px 40px -16px rgba(12, 18, 34, 0.14);
+}
+
+.connect-crown__tiles .connect-luxe__tile-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  box-shadow: 0 4px 12px -4px rgba(12, 18, 34, 0.12);
+}
+
+.connect-crown__tiles .connect-luxe__tile-icon .connect-luxe__svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+}
+
+.connect-crown__tiles .connect-luxe__tile-icon .connect-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  font-size: 0.65rem;
+}
+
+/* Brand-colored icon wells */
+.connect-crown__tiles .connect-luxe__tile--whatsapp .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--whatsapp-channel .connect-luxe__tile-icon {
+  background: #25d366;
+  border-color: rgba(37, 211, 102, 0.35);
+}
+
+.connect-crown__tiles .connect-luxe__tile--whatsapp .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--whatsapp-channel .connect-luxe__tile-icon .connect-luxe__svg {
+  fill: #fff;
+}
+
+.connect-crown__tiles .connect-luxe__tile--phone .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--call-mobile .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--call-alt .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--call-landline .connect-luxe__tile-icon {
+  background: linear-gradient(145deg, #0c7a7a, #0a5c5c);
+  border-color: rgba(12, 122, 122, 0.35);
+}
+
+.connect-crown__tiles .connect-luxe__tile--phone .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--call-mobile .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--call-alt .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--call-landline .connect-luxe__tile-icon .connect-luxe__svg {
+  stroke: #fff;
+}
+
+.connect-crown__tiles .connect-luxe__tile--google .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--google-profile .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--google-search .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--google-listing .connect-luxe__tile-icon {
+  background: #fff;
+}
+
+.connect-crown__tiles .connect-luxe__tile--justdial .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--justdial-reviews .connect-luxe__tile-icon {
+  background: #ff6b00;
+  border-color: rgba(255, 107, 0, 0.35);
+}
+
+.connect-crown__tiles .connect-luxe__tile--practo .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--practo-clinic .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--practo-km .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--practo-hiren .connect-luxe__tile-icon {
+  background: #28328c;
+  border-color: rgba(40, 50, 140, 0.35);
+}
+
+/* Social — white wells so full-color brand SVGs read clearly (like Google) */
+.connect-crown__tiles .connect-luxe__tile--instagram .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--facebook .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--youtube .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--linkedin .connect-luxe__tile-icon {
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.1);
+  box-shadow: 0 4px 14px -4px rgba(12, 18, 34, 0.15);
+}
+
+.connect-crown__tiles .connect-luxe__tile--instagram .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--facebook .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--youtube .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--linkedin .connect-luxe__tile-icon .connect-luxe__svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.connect-crown__tiles .connect-luxe__tile--star .connect-luxe__tile-icon,
+.connect-crown__tiles .connect-luxe__tile--justdial-review .connect-luxe__tile-icon {
+  background: linear-gradient(145deg, #f59e0b, #d97706);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.connect-crown__tiles .connect-luxe__tile--star .connect-luxe__tile-icon .connect-luxe__svg,
+.connect-crown__tiles .connect-luxe__tile--justdial-review .connect-luxe__tile-icon .connect-luxe__svg {
+  fill: #fff;
+  color: #fff;
+}
+
+.connect-crown__tiles .connect-luxe__tile--eka .connect-luxe__tile-icon {
+  background: #0d9488;
+  border-color: rgba(13, 148, 136, 0.35);
+}
+
+.connect-crown__tiles .connect-luxe__tile--magicpin .connect-luxe__tile-icon {
+  background: #e11d48;
+  border-color: rgba(225, 29, 72, 0.35);
+}
+
+.connect-crown__tiles .connect-luxe__tile-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.connect-crown__tiles .connect-luxe__tile-body strong {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.connect-crown__tiles .connect-luxe__tile-body span {
+  font-size: 0.6875rem;
+  color: var(--muted-text);
+  line-height: 1.4;
+}
+
+.connect-crown__tiles .connect-luxe__tile-arrow {
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  color: var(--gold, #c9a962);
+  opacity: 0.6;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.connect-crown__tiles .connect-luxe__tile:hover .connect-luxe__tile-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+/* Review hero card (scoped — not inside .connect-luxe strip) */
+.connect-crown__review-actions .connect-luxe__hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: min(100%, 220px);
+  min-height: 10rem;
+  padding: 1.5rem 1.6rem;
+  border-radius: 1.1rem;
+  text-decoration: none;
+  color: #fff;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.connect-crown__review-actions .connect-luxe__hero--review {
+  background: linear-gradient(145deg, #3d2a08 0%, #9a7b2e 35%, #5c4520 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 16px 40px -16px rgba(184, 149, 108, 0.45);
+}
+
+.connect-crown__review-actions .connect-luxe__hero:hover {
+  transform: translateY(-3px);
+}
+
+.connect-crown__review-actions .connect-luxe__hero-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.connect-crown__review-actions .connect-luxe__hero-icon .connect-luxe__svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: #fff;
+  color: #fff;
+}
+
+.connect-crown__review-actions .connect-luxe__hero-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 0.35rem;
+}
+
+.connect-crown__review-actions .connect-luxe__hero strong {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.connect-crown__review-actions .connect-luxe__hero-sub {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin-top: 0.25rem;
+}
+
+.connect-crown__review-actions .connect-luxe__hero-cta {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 700px) {
+  .connect-crown__tiles .connect-luxe__tile--wide,
+  .connect-crown__tiles .connect-luxe__tile--google-profile,
+  .connect-crown__tiles .connect-luxe__tile--justdial {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 899px) {
+  .connect-crown__photo {
+    max-width: 22rem;
+    margin: 0 auto;
+    max-height: 320px;
+  }
+
+  .connect-crown__trust-strip-actions {
+    flex-direction: column;
+  }
+
+  .connect-crown__trust-strip-actions .connect-crown__btn {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .connect-crown__btn,
+  .connect-crown__tiles .connect-luxe__tile {
+    transition: none;
+  }
+}

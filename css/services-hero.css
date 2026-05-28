@@ -1,0 +1,336 @@
+/* Patel Clinic — Services page hero */
+
+body[data-page="services"] {
+  --services-hero-pad: clamp(2rem, 4vw, 3rem);
+}
+
+body[data-page="services"] .services-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(165deg, #0a0f1c 0%, var(--navy) 42%, #141d32 100%);
+  isolation: isolate;
+}
+
+body[data-page="services"] .services-hero--clean {
+  min-height: auto;
+}
+
+/* Gradient backdrop only — no photo */
+body[data-page="services"] .services-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body[data-page="services"] .services-hero__cinema {
+  display: none;
+}
+
+body[data-page="services"] .services-hero__mesh {
+  position: absolute;
+  inset: -15% -5%;
+  background:
+    radial-gradient(ellipse 50% 45% at 8% 25%, rgba(201, 169, 98, 0.2), transparent 58%),
+    radial-gradient(ellipse 40% 35% at 95% 10%, rgba(12, 122, 122, 0.18), transparent 55%);
+}
+
+body[data-page="services"] .services-hero__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body[data-page="services"] .services-hero__stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: calc(var(--nav-h, 5.75rem) + 1.25rem) clamp(1rem, 4vw, 2.5rem) var(--services-hero-pad);
+}
+
+body[data-page="services"] .services-hero__crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+body[data-page="services"] .services-hero__crumb a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+}
+
+body[data-page="services"] .services-hero__crumb a:hover {
+  color: var(--gold, #c9a962);
+}
+
+body[data-page="services"] .services-hero__crest {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  padding: 0.45rem 1rem 0.45rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(201, 169, 98, 0.38);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body[data-page="services"] .services-hero__crest-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold, #c9a962), #e8d4b8);
+  color: var(--navy);
+  font-size: 0.6rem;
+}
+
+body[data-page="services"] .services-hero h1 {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5vw, 3.35rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #fff;
+  max-width: 18ch;
+}
+
+body[data-page="services"] .services-hero h1 em {
+  font-style: italic;
+  color: var(--gold, #e8d4b8);
+  background: none;
+  -webkit-text-fill-color: unset;
+}
+
+body[data-page="services"] .services-hero__lead {
+  margin: 0;
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 40rem;
+}
+
+/* Pathways — high-contrast white panel */
+body[data-page="services"] .services-hero__pathways-panel {
+  margin: 1.75rem 0 1.25rem;
+  padding: 1.25rem 1.15rem 1.15rem;
+  border-radius: 1.2rem;
+  background: #fff;
+  border: 1px solid rgba(201, 169, 98, 0.25);
+  box-shadow: 0 24px 56px -20px rgba(0, 0, 0, 0.35);
+}
+
+body[data-page="services"] .services-hero__pathways-label {
+  margin: 0 0 0.85rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+  text-align: center;
+}
+
+body[data-page="services"] .services-hero__pathways {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem;
+}
+
+@media (min-width: 640px) {
+  body[data-page="services"] .services-hero__pathways {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.65rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-page="services"] .services-hero__pathways {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body[data-page="services"] .services-hero__pathway {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 4.25rem;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  color: var(--navy);
+  background: linear-gradient(180deg, #faf8f5 0%, #f3efe6 100%);
+  border: 1px solid rgba(12, 18, 34, 0.1);
+  border-radius: 0.85rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+body[data-page="services"] .services-hero__pathway:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201, 169, 98, 0.5);
+  box-shadow: 0 8px 20px -10px rgba(12, 18, 34, 0.15);
+}
+
+body[data-page="services"] .services-hero__pathway-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+body[data-page="services"] .services-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+body[data-page="services"] .services-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="services"] .services-hero__btn:hover {
+  transform: translateY(-2px);
+}
+
+body[data-page="services"] .services-hero__btn--primary {
+  color: var(--navy);
+  background: linear-gradient(135deg, #e8d4b8, var(--gold, #c9a962));
+  box-shadow: 0 16px 40px -12px rgba(201, 169, 98, 0.45);
+}
+
+body[data-page="services"] .services-hero__btn--ghost {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+body[data-page="services"] .services-hero__ribbon {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (min-width: 640px) {
+  body[data-page="services"] .services-hero__ribbon {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body[data-page="services"] .services-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.1rem;
+  padding: 1rem 0.5rem;
+}
+
+@media (min-width: 640px) {
+  body[data-page="services"] .services-hero__stat:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 639px) {
+  body[data-page="services"] .services-hero__stat {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body[data-page="services"] .services-hero__stat:nth-child(odd) {
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  body[data-page="services"] .services-hero__stat:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}
+
+body[data-page="services"] .services-hero__stat-value {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.1;
+}
+
+body[data-page="services"] .services-hero__stat-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Header over dark hero */
+body[data-page="services"] .site-header--prestige:not(.scrolled) {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+}
+
+body[data-page="services"] .site-header--prestige:not(.scrolled) .header-shell {
+  background: rgba(8, 12, 22, 0.38);
+  backdrop-filter: blur(20px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  margin: 0.75rem clamp(0.75rem, 3vw, 2rem) 0;
+  padding-left: 1.25rem;
+  padding-right: 1rem;
+  box-shadow: 0 24px 48px -20px rgba(0, 0, 0, 0.45);
+}
+
+body[data-page="services"] .site-header--prestige:not(.scrolled) .logo__copy strong,
+body[data-page="services"] .site-header--prestige:not(.scrolled) .logo__copy span,
+body[data-page="services"] .site-header--prestige:not(.scrolled) .nav__list a,
+body[data-page="services"] .site-header--prestige:not(.scrolled) .header-actions .btn-ghost {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body[data-page="services"] .site-header--prestige:not(.scrolled) .nav__list a:hover,
+body[data-page="services"] .site-header--prestige:not(.scrolled) .nav__list a.active {
+  color: var(--gold, #c9a962);
+}
+
+body[data-page="services"] .site-header--prestige:not(.scrolled) .nav-toggle span {
+  background: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="services"] .services-hero__pathway:hover,
+  body[data-page="services"] .services-hero__btn:hover {
+    transform: none;
+  }
+}

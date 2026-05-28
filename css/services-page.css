@@ -1,0 +1,412 @@
+/* Patel Clinic — Services page body sections */
+
+body[data-page="services"] main {
+  background: var(--bg);
+}
+
+body[data-page="services"] .services-atlas {
+  padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+body[data-page="services"] .services-atlas--muted {
+  background: linear-gradient(180deg, #f6f2eb 0%, #faf8f5 50%, var(--bg) 100%);
+}
+
+body[data-page="services"] .services-atlas--light {
+  background: linear-gradient(180deg, #faf8f5 0%, #fff 100%);
+}
+
+body[data-page="services"] .services-atlas__head {
+  max-width: 40rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+body[data-page="services"] .services-atlas__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.85rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a962);
+}
+
+body[data-page="services"] .services-atlas__eyebrow::before,
+body[data-page="services"] .services-atlas__eyebrow::after {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold, #c9a962));
+}
+
+body[data-page="services"] .services-atlas__eyebrow::after {
+  background: linear-gradient(90deg, var(--gold, #c9a962), transparent);
+}
+
+body[data-page="services"] .services-atlas__head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  margin: 0 0 0.75rem;
+  line-height: 1.12;
+}
+
+body[data-page="services"] .services-atlas__head p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--muted-text);
+}
+
+/* —— Service detail cards —— */
+body[data-page="services"] .services-atlas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
+body[data-page="services"] .services-detail {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.75rem 1.5rem;
+  scroll-margin-top: calc(var(--nav-h, 5.75rem) + 1.25rem);
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  border-radius: 1.35rem;
+  box-shadow: 0 20px 48px -24px rgba(12, 18, 34, 0.12);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.35s ease;
+}
+
+@media (min-width: 768px) {
+  body[data-page="services"] .services-detail {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 2rem 2rem 2rem 1.75rem;
+    gap: 1.5rem;
+  }
+}
+
+body[data-page="services"] .services-detail::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold, #c9a962), var(--brand-red, #c41e3a), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+body[data-page="services"] .services-detail:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 169, 98, 0.35);
+  box-shadow: 0 28px 56px -22px rgba(12, 18, 34, 0.16);
+}
+
+body[data-page="services"] .services-detail:hover::before {
+  opacity: 1;
+}
+
+body[data-page="services"] .services-detail__lead {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+body[data-page="services"] .services-detail__num {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(12, 18, 34, 0.08);
+  min-width: 2.5rem;
+}
+
+body[data-page="services"] .services-detail__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.4rem;
+  border-radius: 0.9rem;
+  background: linear-gradient(145deg, var(--navy), #1a2848);
+  box-shadow: 0 10px 24px -10px rgba(12, 18, 34, 0.35);
+  flex-shrink: 0;
+}
+
+body[data-page="services"] .services-detail--homeopathic .services-detail__icon {
+  background: linear-gradient(145deg, #3d2f08, #9a7b2e);
+}
+
+body[data-page="services"] .services-detail--diabetes-clinic .services-detail__icon,
+body[data-page="services"] .services-detail--diagnostics .services-detail__icon {
+  background: linear-gradient(145deg, #134e4a, #0c7a7a);
+}
+
+body[data-page="services"] .services-detail--emergency-opd .services-detail__icon {
+  background: linear-gradient(145deg, #4a1520, #8f1530);
+}
+
+body[data-page="services"] .services-detail__body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 0.45rem;
+  line-height: 1.2;
+}
+
+body[data-page="services"] .services-detail__body p {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--muted-text);
+  max-width: 36rem;
+}
+
+body[data-page="services"] .services-detail__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 9.5rem;
+}
+
+body[data-page="services"] .services-detail__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.15rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+body[data-page="services"] .services-detail__btn:hover {
+  transform: translateY(-2px);
+}
+
+body[data-page="services"] .services-detail__btn--primary {
+  color: #fff;
+  background: var(--navy);
+  border: 1px solid var(--navy);
+}
+
+body[data-page="services"] .services-detail__btn--wa {
+  color: var(--navy);
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+}
+
+body[data-page="services"] .services-detail__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(201, 169, 98, 0.06), transparent 55%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+body[data-page="services"] .services-detail:hover .services-detail__shine {
+  opacity: 1;
+}
+
+/* —— Homoeopathic products —— */
+body[data-page="services"] .services-atlas--homoeo {
+  padding-top: 0;
+}
+
+body[data-page="services"] .services-homoeo__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  body[data-page="services"] .services-homoeo__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body[data-page="services"] .services-homoeo-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  border-radius: 1.2rem;
+  box-shadow: 0 16px 40px -20px rgba(12, 18, 34, 0.1);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+body[data-page="services"] .services-homoeo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 48px -18px rgba(12, 18, 34, 0.14);
+}
+
+body[data-page="services"] .services-homoeo-card__media {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #f8f6f2;
+  margin-bottom: 0.85rem;
+}
+
+body[data-page="services"] .services-homoeo-card__media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  display: block;
+}
+
+body[data-page="services"] .services-homoeo-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin: 0 0 0.35rem;
+}
+
+body[data-page="services"] .services-homoeo-card p {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--muted-text);
+}
+
+/* —— Visit CTA —— */
+body[data-page="services"] .services-visit {
+  position: relative;
+  padding: clamp(2.5rem, 5vw, 3.5rem);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy) 0%, #1a2844 50%, #0c2830 100%);
+  border: 1px solid rgba(201, 169, 98, 0.3);
+  box-shadow: 0 40px 90px -30px rgba(12, 18, 34, 0.45);
+}
+
+body[data-page="services"] .services-visit__glow {
+  position: absolute;
+  inset: -40% -20% auto;
+  height: 120%;
+  background:
+    radial-gradient(ellipse 50% 45% at 15% 30%, rgba(201, 169, 98, 0.35), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 90% 20%, rgba(12, 122, 122, 0.25), transparent 50%);
+  pointer-events: none;
+}
+
+body[data-page="services"] .services-visit__inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+body[data-page="services"] .services-visit__inner .services-atlas__eyebrow {
+  color: var(--gold, #c9a962);
+}
+
+body[data-page="services"] .services-visit__inner h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 0.75rem;
+}
+
+body[data-page="services"] .services-visit__inner > p {
+  margin: 0 0 1.75rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+}
+
+body[data-page="services"] .services-visit__phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+body[data-page="services"] .services-visit__phone {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.85rem;
+  transition: background 0.25s ease;
+}
+
+body[data-page="services"] .services-visit__phone span {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold, #c9a962);
+  margin-bottom: 0.15rem;
+}
+
+body[data-page="services"] .services-visit__phone:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+body[data-page="services"] .services-visit__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+body[data-page="services"] .services-visit__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.95rem 1.65rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.3s ease;
+}
+
+body[data-page="services"] .services-visit__btn:hover {
+  transform: translateY(-2px);
+}
+
+body[data-page="services"] .services-visit__btn--primary {
+  color: var(--navy);
+  background: linear-gradient(135deg, #e8d4b8, var(--gold, #c9a962));
+}
+
+body[data-page="services"] .services-visit__btn--ghost {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="services"] .services-detail:hover,
+  body[data-page="services"] .services-homoeo-card:hover {
+    transform: none;
+  }
+}

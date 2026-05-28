@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book appointment · Patel Clinic</title>
+  <meta name="description" content="Book a visit at Patel Clinic, Gayatrinagar, Rajkot.">
+  <link rel="icon" href="images/patel2.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/premium.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/hero.css">
+</head>
+<body data-page="appointment">
+  <header id="site-header"></header>
+  <main>
+    <section class="page-hero page-hero--focus">
+      <div class="container page-hero--focus__grid">
+        <div class="page-hero__copy reveal">
+          <nav class="page-hero__crumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Appointment</span>
+          </nav>
+          <span class="hero-pill" style="background:var(--brand-red-soft);border-color:rgba(185,28,60,.2);color:var(--brand-red)">Book in 60 seconds</span>
+          <h1>Reserve your visit <span class="page-hero__accent">in under a minute.</span></h1>
+          <p class="page-hero__lead">Fill the form below — we open WhatsApp with your details so booking takes one tap.</p>
+          <div class="page-hero__actions">
+            <a href="#appointment-form" class="btn btn-primary btn--lg">Start booking</a>
+            <a href="tel:+919978815066" class="btn btn-outline">Call 99788 15066</a>
+          </div>
+        </div>
+        <ol class="page-hero--focus__steps reveal">
+          <li class="page-hero--focus__step">
+            <span class="page-hero--focus__step-num">1</span>
+            <div><strong>Your details</strong><span>Name, phone &amp; preferred service</span></div>
+          </li>
+          <li class="page-hero--focus__step">
+            <span class="page-hero--focus__step-num">2</span>
+            <div><strong>Pick a date</strong><span>Choose when you would like to visit</span></div>
+          </li>
+          <li class="page-hero--focus__step">
+            <span class="page-hero--focus__step-num">3</span>
+            <div><strong>WhatsApp confirm</strong><span>We reply during clinic hours</span></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section class="section appt-section">
+      <div class="container appt-page__grid">
+      <form class="form-card form-card--luxury reveal" id="appointment-form">
+        <h2>Book a visit</h2>
+        <p style="font-size:0.875rem;color:var(--muted-text);margin-bottom:1.5rem">Submit to continue on WhatsApp with your details.</p>
+        <div class="form-grid cols-2">
+          <div><label for="name">Full name</label><input id="name" name="name" required placeholder="e.g. Priya Sharma" autocomplete="name"></div>
+          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required placeholder="+91 ..." autocomplete="tel"></div>
+        </div>
+        <div class="form-grid cols-2" style="margin-top:1rem">
+          <div><label for="service">Service</label><select id="service" name="service" required><option value="" disabled selected>Select a service</option></select></div>
+          <div><label for="date">Preferred date</label><input id="date" name="date" type="date" required></div>
+        </div>
+        <div style="margin-top:1rem"><label for="message">Message <span style="font-weight:400;color:var(--muted-text)">(optional)</span></label><textarea id="message" name="message" rows="4" placeholder="Symptoms, preferred time, or questions"></textarea></div>
+        <button type="submit" class="btn btn-primary" style="margin-top:1.25rem;width:100%">💬 Continue on WhatsApp</button>
+        <p class="form-success form-note" hidden role="status">WhatsApp opened in a new tab. If nothing happened, check your popup blocker.</p>
+        <p class="form-note">Typical confirmation within one business hour on clinic days.</p>
+      </form>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+  <div class="floating-actions"></div>
+  <script src="js/site-config.js"></script>
+  <script src="js/connect-ui.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/hero-ui.js"></script>
+  <script>
+    document.querySelectorAll("[data-site-address]").forEach(function(el) { el.textContent = SITE.address; });
+  </script>
+</body>
+</html>
