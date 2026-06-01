@@ -3,6 +3,105 @@
   let lightboxItems = [];
   let lightboxIndex = 0;
 
+  function wireLazyVideos(root) {
+    const scope = root || document;
+    scope.querySelectorAll("video[src]").forEach((video) => {
+      if (video.dataset.lazySrc || video.dataset.videoEager !== undefined) return;
+      const src = video.getAttribute("src");
+      if (!src) return;
+      video.dataset.lazySrc = src;
+      video.removeAttribute("src");
+      video.preload = "none";
+    });
+
+    const videos = scope.querySelectorAll("video[data-lazy-src]");
+    if (!videos.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const video = entry.target;
+          if (!video.dataset.lazySrc || video.src) return;
+          video.src = video.dataset.lazySrc;
+          video.preload = "metadata";
+          io.unobserve(video);
+        });
+      },
+      { rootMargin: "240px 0px", threshold: 0.01 }
+    );
+    videos.forEach((video) => io.observe(video));
+  }
+
+  function ensureVideoSrc(video) {
+    if (!video || !video.dataset.lazySrc) return;
+    if (!video.getAttribute("src")) {
+      video.src = video.dataset.lazySrc;
+      video.preload = "metadata";
+      video.load();
+    }
+  }
+
+  function posterLayerHtml(v, eager, posterClass) {
+    if (!v.poster) return "";
+    const cls = posterClass || "video-card__poster";
+    const loading = eager ? "eager" : "lazy";
+    const webp =
+      typeof SITE !== "undefined" && SITE.webpPath ? SITE.webpPath(v.poster) : "";
+    if (webp) {
+      return (
+        '<picture class="' +
+        cls +
+        '" aria-hidden="true">' +
+        '<source srcset="' +
+        webp +
+        '" type="image/webp">' +
+        '<img src="' +
+        v.poster +
+        '" alt="" loading="' +
+        loading +
+        '" decoding="async" width="600" height="800">' +
+        "</picture>"
+      );
+    }
+    return (
+      '<img class="' +
+      cls +
+      '" src="' +
+      v.poster +
+      '" alt="" loading="' +
+      loading +
+      '" decoding="async" width="600" height="800">'
+    );
+  }
+
+  function videoTagAttrs(v, eager) {
+    const poster = v.poster ? ' poster="' + v.poster + '"' : "";
+    if (eager) {
+      return (
+        ' src="' +
+        v.src +
+        '" data-video-eager preload="metadata"' +
+        poster +
+        " playsinline"
+      );
+    }
+    return ' data-lazy-src="' + v.src + '" preload="none"' + poster + " playsinline";
+  }
+
+  function primeEagerVideos(container) {
+    if (!container) return;
+    container.querySelectorAll("video[data-video-eager]").forEach((video) => {
+      const card = video.closest(".video-card, .gallery-reel-card");
+      video.load();
+      const markReady = () => {
+        if (card) card.classList.add("video-card--ready");
+      };
+      if (video.readyState >= 2) markReady();
+      else video.addEventListener("loadeddata", markReady, { once: true });
+    });
+  }
+
   function ensureLightbox() {
     if (document.getElementById("media-lightbox")) return;
     const el = document.createElement("div");
@@ -111,14 +210,23 @@
   }
 
   function heroMosaicItems() {
-    const items = [];
-    if (SITE.clinicImages?.[0]) items.push(SITE.clinicImages[0]);
-    else if (SITE.officialGallery?.[0]) items.push(SITE.officialGallery[0]);
-    if (SITE.clinicFacilityImages?.[2]) items.push(SITE.clinicFacilityImages[2]);
-    if (SITE.patientPhotos?.[5]) items.push(SITE.patientPhotos[5]);
-    if (SITE.clinicImages?.[3]) items.push(SITE.clinicImages[3]);
-    if (SITE.patientPhotos?.[10]) items.push(SITE.patientPhotos[10]);
-    return items.filter(Boolean).slice(0, 5);
+    const items = [
+      SITE.clinicImages?.[0],
+      SITE.officialGallery?.find((i) => i.src && i.src.indexOf("storefront") !== -1) ||
+        SITE.clinicFacilityImages?.[0],
+      SITE.clinicFacilityImages?.[2],
+      SITE.clinicImages?.[3],
+      SITE.patientPhotos?.[10],
+    ];
+    const seen = new Set();
+    return items
+      .filter(Boolean)
+      .filter((g) => {
+        if (!g.src || seen.has(g.src)) return false;
+        seen.add(g.src);
+        return true;
+      })
+      .slice(0, 5);
   }
 
   function filmstripItems() {
@@ -136,8 +244,44 @@
     return "";
   }
 
+  function galleryImageHtml(g, opts) {
+    const src = g.src || "";
+    const useWebp = opts && opts.webp === true;
+    const alt = (g.alt || g.title || "Patel Clinic").replace(/"/g, "&quot;");
+    if (typeof SITE !== "undefined" && SITE.imgHtml) {
+      return SITE.imgHtml(src, {
+        alt: g.alt || g.title || "Patel Clinic",
+        width: 800,
+        height: 800,
+        loading: (opts && opts.loading) || "lazy",
+        webp: useWebp,
+      });
+    }
+    return (
+      '<img src="' +
+      src +
+      '" alt="' +
+      alt +
+      '" loading="' +
+      ((opts && opts.loading) || "lazy") +
+      '" width="800" height="800" decoding="async">'
+    );
+  }
+
   function galleryTileHtml(g, index, group, isPageAtlas) {
-    const wide = isPageAtlas ? atlasTileModifiers(index) : index % 7 === 0 ? " gallery-tile--wide" : "";
+    const isHomoeo = group === "homoeopathy";
+    const wide =
+      isPageAtlas && !isHomoeo
+        ? atlasTileModifiers(index)
+        : !isHomoeo && index % 7 === 0
+          ? " gallery-tile--wide"
+          : "";
+    const homoeoSize =
+      isHomoeo && isPageAtlas
+        ? index === 0
+          ? " gallery-tile--homoeo-feature"
+          : " gallery-tile--homoeo"
+        : "";
     const caption =
       g.title && g.caption
         ? '<span class="gallery-tile__label"><strong>' +
@@ -150,6 +294,7 @@
       '<button type="button" class="gallery-tile' +
       (isPageAtlas ? " gallery-atlas-tile" : "") +
       wide +
+      homoeoSize +
       " reveal" +
       '" data-lightbox-group="' +
       group +
@@ -157,11 +302,11 @@
       index +
       '" aria-label="View ' +
       (g.title || "photograph") +
-      '"><img src="' +
-      g.src +
-      '" alt="' +
-      (g.alt || "Patel Clinic") +
-      '" loading="lazy" width="800" height="800">' +
+      '">' +
+      galleryImageHtml(g, {
+        webp: !isHomoeo && typeof SITE !== "undefined" && SITE.hasWebp(g.src),
+        loading: index < 2 ? "eager" : "lazy",
+      }) +
       '<span class="gallery-tile__veil" aria-hidden="true"></span>' +
       '<span class="gallery-tile__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"/></svg></span>' +
       caption +
@@ -176,9 +321,18 @@
     container.innerHTML = items
       .map(
         (g) =>
-          '<img src="' +
-          g.src +
-          '" alt="" width="120" height="90" loading="lazy" decoding="async">'
+          typeof SITE !== "undefined" && SITE.imgHtml
+            ? SITE.imgHtml(g.src, {
+                alt: g.alt || "Patel Clinic",
+                width: 120,
+                height: 90,
+                loading: "lazy",
+              })
+            : '<img src="' +
+              g.src +
+              '" alt="' +
+              (g.alt || "Patel Clinic") +
+              '" width="120" height="90" loading="lazy" decoding="async">'
       )
       .join("");
   }
@@ -194,13 +348,22 @@
           (i === 0 ? " gallery-hero__mosaic-frame--hero" : "") +
           '" data-lightbox-group="hero-mosaic" data-lightbox-index="' +
           i +
-          '" aria-label="View featured photo"><img src="' +
-          g.src +
-          '" alt="' +
-          (g.alt || "Patel Clinic") +
-          '" loading="' +
-          (i === 0 ? "eager" : "lazy") +
-          '" width="600" height="800"><span class="gallery-hero__mosaic-hint">View</span></button>'
+          '" aria-label="View featured photo">' +
+          (typeof SITE !== "undefined" && SITE.imgHtml
+            ? SITE.imgHtml(g.src, {
+                alt: g.alt || "Patel Clinic",
+                loading: i === 0 ? "eager" : "lazy",
+                width: 600,
+                height: 800,
+              })
+            : '<img src="' +
+              g.src +
+              '" alt="' +
+              (g.alt || "Patel Clinic") +
+              '" loading="' +
+              (i === 0 ? "eager" : "lazy") +
+              '" width="600" height="800">') +
+          '<span class="gallery-hero__mosaic-hint">View</span></button>'
       )
       .join("");
     bindLightboxGroup(container, "hero-mosaic", items);
@@ -406,19 +569,29 @@
   function renderReviewVideos(container) {
     if (!container || !SITE.reviewVideos?.length) return;
     const isTestimonialsPage = container.classList.contains("testimonials-video-showcase");
-    container.innerHTML = SITE.reviewVideos
+    const isGalleryShowcase = container.classList.contains("gallery-video-showcase");
+    const eagerCount = isTestimonialsPage ? 4 : isGalleryShowcase ? 6 : 2;
+    const videos = SITE.reviewVideos;
+    container.innerHTML = videos
       .map((v, i) => {
         const num = String(i + 1).padStart(2, "0");
+        const eager = i < eagerCount;
+        const useHero = isTestimonialsPage && i === 0;
+        const label =
+          isTestimonialsPage
+            ? "Story " + num
+            : isGalleryShowcase
+              ? "Review " + num
+              : "";
         return (
           '<article class="video-card reveal' +
-          (i === 0 ? " video-card--hero" : "") +
+          (useHero ? " video-card--hero" : "") +
           '"><div class="video-card__screen">' +
-          (isTestimonialsPage
-            ? '<span class="video-card__label">Story ' + num + "</span>"
-            : "") +
-          '<video src="' +
-          v.src +
-          '" playsinline preload="metadata"></video><button type="button" class="video-card__play" aria-label="Play video ' +
+          (label ? '<span class="video-card__label">' + label + "</span>" : "") +
+          posterLayerHtml(v, eager) +
+          "<video " +
+          videoTagAttrs(v, eager) +
+          '></video><button type="button" class="video-card__play" aria-label="Play video ' +
           num +
           '"><span class="video-card__ring"></span><span class="video-card__triangle"></span></button><button type="button" class="video-card__expand" data-video-expand="' +
           i +
@@ -432,13 +605,13 @@
       const playBtn = card.querySelector(".video-card__play");
       if (!video || !playBtn) return;
       playBtn.addEventListener("click", () => {
+        ensureVideoSrc(video);
         if (video.paused) {
           container.querySelectorAll("video").forEach((v) => {
             if (v !== video) v.pause();
           });
           container.querySelectorAll(".video-card").forEach((c) => c.classList.remove("is-playing"));
-          video.play();
-          card.classList.add("is-playing");
+          video.play().then(() => card.classList.add("is-playing")).catch(() => {});
         } else {
           video.pause();
           card.classList.remove("is-playing");
@@ -459,6 +632,8 @@
         );
       });
     });
+    wireLazyVideos(container);
+    primeEagerVideos(container);
     window.PatelReveal?.();
   }
 
@@ -471,11 +646,11 @@
           (i % 5 === 0 ? " gallery-tile--tall" : "") +
           '" data-lightbox-group="reviews" data-lightbox-index="' +
           i +
-          '" aria-label="View photo"><img src="' +
-          p.src +
-          '" alt="' +
-          p.alt +
-          '" loading="lazy" width="600" height="600"><span class="gallery-tile__veil" aria-hidden="true"></span><span class="gallery-tile__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"/></svg></span></button>'
+          '" aria-label="View photo">' +
+          (typeof SITE !== "undefined" && SITE.imgHtml
+            ? SITE.imgHtml(p.src, { alt: p.alt, width: 600, height: 600, loading: "lazy" })
+            : '<img src="' + p.src + '" alt="' + p.alt + '" loading="lazy" width="600" height="600">') +
+          '<span class="gallery-tile__veil" aria-hidden="true"></span><span class="gallery-tile__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"/></svg></span></button>'
         );
       })
       .join("");
@@ -485,30 +660,47 @@
 
   function renderGalleryReels(container) {
     if (!container || !SITE.reviewVideos?.length) return;
+    if (container.classList.contains("gallery-video-showcase")) {
+      renderReviewVideos(container);
+      return;
+    }
     const picks = SITE.reviewVideos.slice(0, 3);
     container.innerHTML = picks
       .map(
         (v, i) =>
           '<button type="button" class="gallery-reel-card reveal" data-video-expand="' +
           i +
-          '" aria-label="Play patient video review"><video src="' +
-          v.src +
-          '" muted playsinline preload="metadata" poster=""></video><span class="gallery-reel-card__shade" aria-hidden="true"></span><span class="gallery-reel-card__play" aria-hidden="true">▶</span><span class="gallery-reel-card__meta"><strong>Patient review</strong><span>Tap to watch full screen</span></span></button>'
+          '" aria-label="Play patient video review">' +
+          posterLayerHtml(v, true, "gallery-reel-card__poster") +
+          "<video " +
+          videoTagAttrs(v, true) +
+          ' muted></video><span class="gallery-reel-card__shade" aria-hidden="true"></span><span class="gallery-reel-card__play" aria-hidden="true">▶</span><span class="gallery-reel-card__meta"><strong>Patient review</strong><span>Tap to watch full screen</span></span></button>'
       )
       .join("");
 
     container.querySelectorAll(".gallery-reel-card").forEach((card, i) => {
       const video = card.querySelector("video");
+      const playHint = card.querySelector(".gallery-reel-card__play");
       if (!video) return;
-      card.addEventListener("mouseenter", () => {
+      const previewPlay = () => {
+        ensureVideoSrc(video);
         video.play().catch(() => {});
         card.classList.add("is-playing");
-      });
-      card.addEventListener("mouseleave", () => {
+      };
+      const previewStop = () => {
         video.pause();
         video.currentTime = 0;
         card.classList.remove("is-playing");
-      });
+      };
+      card.addEventListener("mouseenter", previewPlay);
+      card.addEventListener("mouseleave", previewStop);
+      if (playHint) {
+        playHint.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (video.paused) previewPlay();
+          else previewStop();
+        });
+      }
       card.addEventListener("click", () => {
         openLightbox(
           SITE.reviewVideos.map((item) => ({ src: item.src, alt: item.alt, type: "video" })),
@@ -516,6 +708,8 @@
         );
       });
     });
+    wireLazyVideos(container);
+    primeEagerVideos(container);
     window.PatelReveal?.();
   }
 
@@ -529,5 +723,6 @@
     renderReviewVideos(document.getElementById("review-videos-grid"));
     renderReviewPhotos(document.getElementById("review-photos-grid"));
     bindHomeGalleryBento();
+    wireLazyVideos(document);
   });
 })();

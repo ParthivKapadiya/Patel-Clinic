@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://patel-clinic.netlify.app/sitemap.xml

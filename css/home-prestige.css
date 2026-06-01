@@ -4,8 +4,6 @@
 body[data-page="home"] .home-prestige-facilities {
   position: relative;
   z-index: 4;
-  margin-top: -3rem;
-  padding: 0 0 0.5rem;
   scroll-margin-top: calc(var(--nav-h) + 1rem);
 }
 

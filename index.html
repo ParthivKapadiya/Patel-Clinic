@@ -6,15 +6,16 @@
   <title>Patel Clinic · Dr. Hiren K. Patel & Dr. K. M. Patel | Gayatrinagar, Rajkot</title>
   <meta name="description" content="Patel Clinic, Gayatrinagar Rajkot — family physician, homeopathic care, ECG, vaccination, minor surgery. Dr. Hiren K. Patel 9978815066 · Dr. K. M. Patel 9825245002. Beside Radhe Shyam Dairy.">
   <link rel="icon" href="images/patel2.jpeg" type="image/jpeg">
+  <link rel="preload" href="images/webp/patel4.webp" as="image" type="image/webp" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/premium.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/media.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/home-hero.css">
-  <link rel="stylesheet" href="css/crown.css">
+  <link rel="stylesheet" href="css/bundles/site-base.bundle.css?v=4">
+  <link rel="stylesheet" href="css/bundles/home.bundle.css?v=4">
+  <link rel="stylesheet" href="css/core-a11y.css">
+  <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body data-page="home">
   <header id="site-header"></header>
@@ -23,7 +24,10 @@
     <section class="hero hero--luxury hero--ultra hero--crown" aria-label="Welcome">
       <div class="hero__cinema">
         <div class="hero__media">
-          <img id="hero-bg-img" src="images/patel4.jpeg" alt="Patel Clinic storefront — Gayatrinagar, Rajkot">
+          <picture>
+            <source srcset="images/webp/patel4.webp" type="image/webp">
+            <img id="hero-bg-img" src="images/patel4.jpeg" alt="Patel Clinic storefront — Gayatrinagar, Rajkot" width="1200" height="800" fetchpriority="high" decoding="async">
+          </picture>
         </div>
         <div class="hero__veil hero__media-veil" aria-hidden="true"></div>
         <div class="hero__crown-frame" aria-hidden="true"></div>
@@ -52,7 +56,7 @@
 
           <div class="hero__doctors hero__doctors--crown">
             <article class="hero-doctor-chip">
-              <img class="hero-doctor-chip__avatar" src="images/pi3.jpeg" alt="" width="40" height="40" loading="eager">
+              <img class="hero-doctor-chip__avatar" src="images/pi3.jpeg" alt="Dr. K. M. Patel" width="40" height="40" loading="eager">
               <div>
                 <span class="hero-doctor-chip__name">Dr. K. M. Patel</span>
                 <span class="hero-doctor-chip__role">MBBS, RCGP · Family Physician</span>
@@ -60,7 +64,7 @@
               </div>
             </article>
             <article class="hero-doctor-chip">
-              <img class="hero-doctor-chip__avatar" src="images/pi2.jpeg" alt="" width="40" height="40" loading="eager">
+              <img class="hero-doctor-chip__avatar" src="images/pi2.jpeg" alt="Dr. Hiren K. Patel" width="40" height="40" loading="eager">
               <div>
                 <span class="hero-doctor-chip__name">Dr. Hiren K. Patel</span>
                 <span class="hero-doctor-chip__role">BHMS, PGDHM · Homoeopathic Surgeon</span>
@@ -130,12 +134,14 @@
     </section>
 
     <section class="home-prestige-facilities home-trust" id="home-trust" aria-label="Core facilities">
+      <div class="facilities-title-band">
+        <div class="container">
+          <p class="facilities-title-band__eyebrow">Clinical excellence</p>
+          <h2 class="facilities-title-band__title">Everything your family needs, <em>under one roof</em></h2>
+        </div>
+      </div>
       <div class="prestige-facilities__wrap">
         <div class="container">
-          <header class="prestige-facilities__head reveal">
-            <p class="prestige-facilities__eyebrow">Clinical excellence</p>
-            <h2>Everything your family needs, <em>under one roof</em></h2>
-          </header>
           <div class="prestige-facilities__grid">
             <article class="prestige-facility-card prestige-facility-card--surgery reveal">
               <span class="prestige-facility-card__shine" aria-hidden="true"></span>
@@ -200,7 +206,7 @@
             <div class="philosophy-atlas__monument">
               <span class="philosophy-atlas__watermark" aria-hidden="true">1981</span>
               <div class="philosophy-atlas__monument-bg" aria-hidden="true">
-                <img src="images/patel4.jpeg" alt="" loading="lazy" width="400" height="300">
+                <img src="images/patel4.jpeg" alt="" role="presentation" loading="lazy" width="400" height="300">
               </div>
               <figure class="philosophy-atlas__card">
                 <span class="philosophy-atlas__card-seal">Official · Est. 1981</span>
@@ -518,11 +524,12 @@
   <footer id="site-footer"></footer>
   <div class="floating-actions"></div>
 
-  <script src="js/site-config.js"></script>
-  <script src="js/connect-ui.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/media-ui.js"></script>
-  <script src="js/hero-ui.js"></script>
+  <script src="js/site-config.js?v=5"></script>
+  <script src="js/seo.js" defer></script>
+  <script src="js/connect-ui.js" defer></script>
+  <script src="js/main.js?v=4" defer></script>
+  <script src="js/media-ui.js" defer></script>
+  <script src="js/hero-ui.js" defer></script>
   <script>
     var heroWa = document.getElementById("hero-whatsapp");
     if (heroWa) {

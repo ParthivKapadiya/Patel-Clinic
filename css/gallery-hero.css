@@ -47,7 +47,9 @@ body[data-page="gallery"] .gallery-hero__filmstrip {
   mask-image: linear-gradient(180deg, transparent, #000 25%, #000 75%, transparent);
 }
 
-body[data-page="gallery"] .gallery-hero__filmstrip img {
+body[data-page="gallery"] .gallery-hero__filmstrip img,
+body[data-page="gallery"] .gallery-hero__filmstrip picture,
+body[data-page="gallery"] .gallery-hero__filmstrip picture img {
   width: clamp(72px, 12vw, 120px);
   height: clamp(54px, 9vw, 90px);
   object-fit: cover;
@@ -122,8 +124,11 @@ body[data-page="gallery"] .gallery-hero__crest-icon {
   height: 1.45rem;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--gold, #c9a962), #e8d4b8);
-  color: var(--navy);
-  font-size: 0.6rem;
+  color: #0c1222;
+  font-size: 0.65rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 body[data-page="gallery"] .gallery-hero h1 {
@@ -235,6 +240,7 @@ body[data-page="gallery"] .gallery-hero__mosaic {
 
 body[data-page="gallery"] .gallery-hero__mosaic-frame {
   position: relative;
+  min-height: 72px;
   margin: 0;
   padding: 0;
   border: none;
@@ -273,12 +279,23 @@ body[data-page="gallery"] .gallery-hero__mosaic-frame:nth-child(5) {
   grid-row: 3;
 }
 
-body[data-page="gallery"] .gallery-hero__mosaic-frame img {
+body[data-page="gallery"] .gallery-hero__mosaic-frame picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body[data-page="gallery"] .gallery-hero__mosaic-frame img,
+body[data-page="gallery"] .gallery-hero__mosaic-frame picture img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  min-height: 100%;
 }
 
 body[data-page="gallery"] .gallery-hero__mosaic-frame::after {

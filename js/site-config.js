@@ -1,6 +1,12 @@
 /** Patel Clinic — official details from signage, business card & flyer */
+/** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
+  assetVersion: "5",
   name: "Patel Clinic",
+  /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
+  siteUrl: "https://patel-clinic.netlify.app",
+  ogImage: "images/patel2.jpeg",
+  geo: { lat: 22.3039, lng: 70.8022 },
   logo: "images/patel2.jpeg",
   heroImage: "images/patel4.jpeg",
   tagline: "Family physician & homeopathic care in Gayatrinagar — full-time OPD & emergency.",
@@ -11,8 +17,6 @@ const SITE = {
   phoneTel: "+919978815066",
   phoneAlt: "+919825245002",
   phoneAltDisplay: "+91 98252 45002",
-  phoneLandline: "0281-2361368",
-  phoneLandlineTel: "+912812361368",
   whatsapp: "919978815066",
   whatsappUrl: "https://wa.me/919978815066",
   whatsappChannelUrl: "https://wa.me/message/TERNBOE4NUVEB1",
@@ -249,13 +253,60 @@ const SITE = {
       q: "Do you offer home visits?",
       a: "Yes. Home visit and ICU care at home are available — please call or WhatsApp to confirm availability for your area.",
     },
+    {
+      category: "booking",
+      q: "How do I book an appointment?",
+      a: "Use the Book appointment page on this website — it opens WhatsApp with your details pre-filled. You can also call 99788 15066 or 98252 45002 during clinic hours.",
+    },
+    {
+      category: "booking",
+      q: "What are your clinic hours?",
+      a: "Monday–Saturday: 10:00 AM – 2:00 PM and 5:00 PM – 10:00 PM. Sunday: 10:00 AM – 2:00 PM only. Emergency calls are answered on the doctor mobiles listed on our Contact page.",
+    },
+    {
+      category: "booking",
+      q: "Are consultation fees shared before treatment?",
+      a: "Yes. OPD, procedure and package fees are explained upfront. For care plans and packages, enquire on WhatsApp or at the front desk before your visit.",
+    },
+    {
+      category: "visits",
+      q: "What should I bring for my first visit?",
+      a: "Bring any previous prescriptions, medical reports, a list of current medicines, and a government ID if needed for insurance paperwork. Arrive 10 minutes early for registration.",
+    },
+    {
+      category: "visits",
+      q: "Do you treat children and families?",
+      a: "Yes. Both doctors see patients of all ages — routine check-ups, vaccination, fever, and chronic care for the whole family under one roof.",
+    },
+    {
+      category: "facilities",
+      q: "Can I get an ECG or blood sugar test at the clinic?",
+      a: "Yes. ECG, glucometer (blood sugar), and nebulizer are available on site. For other lab tests we guide you to trusted partners and review reports during follow-up.",
+    },
+    {
+      category: "facilities",
+      q: "Is homoeopathic treatment available with general medicine?",
+      a: "Yes. Dr. Hiren K. Patel provides homoeopathic and specialty care; Dr. K. M. Patel offers family medicine and minor surgery — coordinated care in the same clinic.",
+    },
+    {
+      category: "location",
+      q: "Is parking available near the clinic?",
+      a: "Street parking is available on Gayatri Nagar Main Road. Landmark: beside Radhe Shyam Dairy Farm, opposite SBI Bank — most patients find the clinic easily on Google Maps.",
+    },
+    {
+      category: "insurance",
+      q: "Do you work with LIC or insurance medical checks?",
+      a: "Dr. K. M. Patel is an authorized LIC Medical Officer and panel doctor. Bring your LIC or insurer paperwork and we will guide you through the medical examination process.",
+    },
   ],
   faqCategories: [
     { id: "visits", label: "Visits & doctors", desc: "Availability, OPD & home visits" },
+    { id: "booking", label: "Appointments & hours", desc: "Booking, timings & fees" },
     { id: "emergency", label: "Emergencies", desc: "Urgent care & after-hours contact" },
     { id: "facilities", label: "Clinic & services", desc: "Equipment, procedures & specialties" },
     { id: "location", label: "Find us", desc: "Address, landmarks & directions" },
     { id: "doctors", label: "Our physicians", desc: "Qualifications & experience" },
+    { id: "insurance", label: "Insurance & panels", desc: "LIC and medical officer services" },
   ],
   /** Verified listings, social profiles & review links */
   connect: {
@@ -293,13 +344,6 @@ const SITE = {
             label: "Dr. K. M. Patel",
             desc: "98252 45002",
             href: "tel:+919825245002",
-            icon: "phone",
-          },
-          {
-            id: "call-landline",
-            label: "Clinic landline",
-            desc: "0281-2361368",
-            href: "tel:+912812361368",
             icon: "phone",
           },
         ],
@@ -476,9 +520,10 @@ SITE.patientPhotos = PATIENT_PHOTO_NUMBERS.map((n) => {
   };
 });
 
-SITE.reviewVideos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13].map((n) => ({
-  src: `images/pv${n}.mp4`,
+SITE.reviewVideos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13].map((n, i) => ({
+  src: `images/optimized/pv${n}.mp4`,
   alt: "Patient video review — Patel Clinic, Gayatrinagar, Rajkot",
+  poster: SITE.patientPhotos[i % SITE.patientPhotos.length].src,
 }));
 
 SITE.clinicFacilityImages = Array.from({ length: CLINIC_FACILITY_COUNT }, (_, i) => {
@@ -520,7 +565,7 @@ SITE.officialGallery = [
     alt: "Patel Clinic signage — Dr. K. M. Patel and Dr. Hiren K. Patel, Gayatrinagar",
     title: "Clinic signage",
     caption:
-      "Family physician & surgeon — diabetes, BP, thyroid, vaccines and homoeopathic care. Ph. 0281-2361368 · Mo. 99788 15066.",
+      "Family physician & surgeon — diabetes, BP, thyroid, vaccines and homoeopathic care. Dr. Hiren 99788 15066 · Dr. K. M. Patel 98252 45002.",
   },
 ];
 
@@ -633,3 +678,110 @@ SITE.pageHeroes = {
     compact: true,
   },
 };
+
+/** WebP path for JPEG/PNG (only when scripts/optimize-images.sh has been run). */
+SITE.webpPath = function webpPath(src) {
+  if (!src || !/\.(jpe?g|png)$/i.test(src)) return "";
+  /* Promo PNGs live in images/promo/ but WebPs are flat under images/webp/ppN.webp */
+  if (/^images\/promo\//i.test(src)) {
+    const base = src.replace(/^images\/promo\//i, "").replace(/\.(jpe?g|png)$/i, "");
+    return "images/webp/" + base + ".webp";
+  }
+  return src.replace(/^images\//i, "images/webp/").replace(/\.(jpe?g|png)$/i, ".webp");
+};
+
+/** Paths we ship WebP for — avoids broken <picture> when .webp is missing. */
+SITE.hasWebp = function hasWebp(src) {
+  if (!src || !/\.(jpe?g|png)$/i.test(src)) return false;
+  if (src.indexOf("images/promo/") !== -1) return true;
+  if (/images\/patel\d/i.test(src)) return true;
+  if (/images\/pi\d/i.test(src)) return true;
+  if (/images\/clinic[-.]/i.test(src)) return true;
+  if (src.indexOf("images/logo.png") !== -1) return true;
+  return false;
+};
+
+/** Picture element with WebP + fallback (plain img when WebP not available). */
+SITE.imgHtml = function imgHtml(src, opts) {
+  const o = opts || {};
+  const alt = (o.alt || "").replace(/"/g, "&quot;");
+  const cls = o.className ? ' class="' + o.className + '"' : "";
+  const id = o.id ? ' id="' + o.id + '"' : "";
+  const w = o.width ? ' width="' + o.width + '"' : "";
+  const h = o.height ? ' height="' + o.height + '"' : "";
+  const loading = ' loading="' + (o.loading || "lazy") + '"';
+  const decoding = ' decoding="' + (o.decoding || "async") + '"';
+  const fetch = o.fetchpriority ? ' fetchpriority="' + o.fetchpriority + '"' : "";
+  const useWebp = o.webp !== false && SITE.hasWebp(src);
+  const webp = useWebp ? SITE.webpPath(src) : "";
+  if (!webp) {
+    return "<img src=\"" + src + "\" alt=\"" + alt + "\"" + cls + id + w + h + loading + decoding + fetch + ">";
+  }
+  return (
+    "<picture><source srcset=\"" +
+    webp +
+    '" type="image/webp"><img src="' +
+    src +
+    '" alt="' +
+    alt +
+    '"' +
+    cls +
+    id +
+    w +
+    h +
+    loading +
+    decoding +
+    fetch +
+    "></picture>"
+  );
+};
+
+/** Mobile menu: move panel to body (fixes clip after scroll when header has backdrop-filter). */
+SITE.initMobileMenu = function initMobileMenu() {
+  const toggle = document.getElementById("nav-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (!toggle || !menu || menu.dataset.portalBound === "1") return;
+  menu.dataset.portalBound = "1";
+
+  if (menu.parentElement !== document.body) {
+    document.body.appendChild(menu);
+  }
+
+  const positionMobileMenu = () => {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    const bottom = Math.ceil(header.getBoundingClientRect().bottom);
+    menu.style.setProperty("--menu-top", bottom + "px");
+  };
+
+  const closeMenu = () => {
+    menu.classList.remove("open");
+    menu.setAttribute("aria-hidden", "true");
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("header-menu-open");
+  };
+
+  toggle.addEventListener("click", () => {
+    const open = !menu.classList.contains("open");
+    if (open) positionMobileMenu();
+    menu.classList.toggle("open", open);
+    menu.setAttribute("aria-hidden", open ? "false" : "true");
+    toggle.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("header-menu-open", open);
+  });
+
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (menu.classList.contains("open")) positionMobileMenu();
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", () => {
+    if (menu.classList.contains("open")) positionMobileMenu();
+  });
+};
+
+document.addEventListener("DOMContentLoaded", SITE.initMobileMenu);

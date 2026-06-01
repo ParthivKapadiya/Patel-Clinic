@@ -1,0 +1,183 @@
+/* Patel Clinic — Appointment page body */
+
+body[data-page="appointment"] main {
+  background: var(--bg);
+}
+
+body[data-page="appointment"] .appt-atlas {
+  padding: clamp(3rem, 6vw, 4.5rem) 0;
+}
+
+body[data-page="appointment"] .appt-atlas--quick {
+  padding-top: 0;
+  margin-top: -1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+body[data-page="appointment"] .appt-quick {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  body[data-page="appointment"] .appt-quick {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  body[data-page="appointment"] .appt-quick {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}
+
+body[data-page="appointment"] .appt-quick__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.15rem 1.25rem;
+  text-decoration: none;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  box-shadow: 0 16px 40px -20px rgba(12, 18, 34, 0.14);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+body[data-page="appointment"] .appt-quick__card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 169, 98, 0.4);
+  box-shadow: 0 24px 48px -16px rgba(12, 18, 34, 0.18);
+}
+
+body[data-page="appointment"] .appt-quick__icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+body[data-page="appointment"] .appt-quick__card strong {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+body[data-page="appointment"] .appt-quick__card span:last-child {
+  font-size: 0.8125rem;
+  color: var(--muted-text);
+  line-height: 1.45;
+}
+
+body[data-page="appointment"] .appt-atlas--form {
+  background: linear-gradient(180deg, #faf8f5 0%, #fff 100%);
+  padding-bottom: clamp(4rem, 8vw, 6rem);
+}
+
+body[data-page="appointment"] .appt-form-layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  body[data-page="appointment"] .appt-form-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+    gap: 2.5rem;
+  }
+}
+
+body[data-page="appointment"] .appt-form-card {
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: 1.25rem;
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  box-shadow: 0 28px 64px -32px rgba(12, 18, 34, 0.2);
+}
+
+body[data-page="appointment"] .appt-form-card h2 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  color: var(--navy);
+}
+
+body[data-page="appointment"] .appt-form-card__sub {
+  margin: 0 0 1.5rem;
+  font-size: 0.875rem;
+  color: var(--muted-text);
+  line-height: 1.55;
+}
+
+body[data-page="appointment"] .appt-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+body[data-page="appointment"] .appt-aside__panel {
+  padding: 1.25rem 1.35rem;
+  border-radius: 1rem;
+  background: var(--navy);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+body[data-page="appointment"] .appt-aside__panel h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+body[data-page="appointment"] .appt-aside__panel p,
+body[data-page="appointment"] .appt-aside__panel li {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body[data-page="appointment"] .appt-aside__panel ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+body[data-page="appointment"] .appt-aside__panel li + li {
+  margin-top: 0.35rem;
+}
+
+body[data-page="appointment"] .appt-aside__hours {
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  color: var(--navy);
+}
+
+body[data-page="appointment"] .appt-aside__hours h3 {
+  color: var(--navy);
+}
+
+body[data-page="appointment"] .appt-aside__hours p {
+  color: var(--muted-text);
+}
+
+body[data-page="appointment"] #hours-list-appt {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+body[data-page="appointment"] .appt-form-card .btn-primary {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+body[data-page="appointment"] .form-success {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: #0c5c4a;
+  background: rgba(12, 122, 122, 0.1);
+  border-radius: 0.5rem;
+}

@@ -6,20 +6,26 @@
   <title>About · Patel Clinic</title>
   <meta name="description" content="About Patel Clinic — Dr. Hiren K. Patel & Dr. K. M. Patel, Gayatrinagar Rajkot since 1981.">
   <link rel="icon" href="images/patel2.jpeg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/premium.css">
+  <link rel="stylesheet" href="css/bundles/site-base.bundle.css?v=4">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="stylesheet" href="css/crown.css">
   <link rel="stylesheet" href="css/about-hero.css">
   <link rel="stylesheet" href="css/about-page.css">
   <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/core-a11y.css">
+  <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body data-page="about">
   <header id="site-header"></header>
   <main>
     <section class="about-hero" aria-label="About Patel Clinic">
       <div class="about-hero__cinema" aria-hidden="true">
-        <img src="images/clinic-storefront.png" alt="" width="1600" height="900" loading="eager">
+        <img src="images/clinic-storefront.png" alt="" role="presentation" width="1600" height="900" loading="eager">
         <div class="about-hero__veil"></div>
         <div class="about-hero__mesh"></div>
         <div class="about-hero__grain"></div>
@@ -44,7 +50,7 @@
 
             <div class="about-hero__doctors">
               <article class="about-hero__doctor">
-                <img src="images/pi3.jpeg" alt="" width="40" height="40" loading="eager">
+                <img src="images/pi3.jpeg" alt="Dr. K. M. Patel" width="40" height="40" loading="eager">
                 <div>
                   <strong>Dr. K. M. Patel</strong>
                   <span>MBBS, RCGP · Family Physician</span>
@@ -52,7 +58,7 @@
                 </div>
               </article>
               <article class="about-hero__doctor">
-                <img src="images/pi2.jpeg" alt="" width="40" height="40" loading="eager">
+                <img src="images/pi2.jpeg" alt="Dr. Hiren K. Patel" width="40" height="40" loading="eager">
                 <div>
                   <strong>Dr. Hiren K. Patel</strong>
                   <span>BHMS, PGDHM · Homoeopathic Surgeon</span>
@@ -243,9 +249,10 @@
   </main>
   <footer id="site-footer"></footer>
   <div class="floating-actions"></div>
-  <script src="js/site-config.js"></script>
-  <script src="js/connect-ui.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/hero-ui.js"></script>
+  <script src="js/site-config.js?v=5"></script>
+  <script src="js/seo.js" defer></script>
+  <script src="js/connect-ui.js" defer></script>
+  <script src="js/main.js?v=4" defer></script>
+  <script src="js/hero-ui.js" defer></script>
 </body>
 </html>

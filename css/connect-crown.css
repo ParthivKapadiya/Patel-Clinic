@@ -428,16 +428,14 @@
 
 .connect-crown__tiles .connect-luxe__tile--phone .connect-luxe__tile-icon,
 .connect-crown__tiles .connect-luxe__tile--call-mobile .connect-luxe__tile-icon,
-.connect-crown__tiles .connect-luxe__tile--call-alt .connect-luxe__tile-icon,
-.connect-crown__tiles .connect-luxe__tile--call-landline .connect-luxe__tile-icon {
+.connect-crown__tiles .connect-luxe__tile--call-alt .connect-luxe__tile-icon {
   background: linear-gradient(145deg, #0c7a7a, #0a5c5c);
   border-color: rgba(12, 122, 122, 0.35);
 }
 
 .connect-crown__tiles .connect-luxe__tile--phone .connect-luxe__tile-icon .connect-luxe__svg,
 .connect-crown__tiles .connect-luxe__tile--call-mobile .connect-luxe__tile-icon .connect-luxe__svg,
-.connect-crown__tiles .connect-luxe__tile--call-alt .connect-luxe__tile-icon .connect-luxe__svg,
-.connect-crown__tiles .connect-luxe__tile--call-landline .connect-luxe__tile-icon .connect-luxe__svg {
+.connect-crown__tiles .connect-luxe__tile--call-alt .connect-luxe__tile-icon .connect-luxe__svg {
   stroke: #fff;
 }
 

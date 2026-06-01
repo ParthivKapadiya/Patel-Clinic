@@ -1,9 +1,4 @@
-/* Patel Clinic — home page (luxury layer) */
-@import url("connect.css");
-@import url("home-hero.css");
-@import url("home-prestige.css");
-@import url("crown.css");
-@import url("home-atlas.css");
+/* Patel Clinic — home page (luxury layer). Section CSS is in css/bundles/home.bundle.css on index. */
 
 body[data-page="home"] {
   --home-section-pad: clamp(4.5rem, 8vw, 7rem);

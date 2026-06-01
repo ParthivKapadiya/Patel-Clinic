@@ -353,11 +353,6 @@
       '"><span>Dr. K. M. Patel</span> ' +
       (SITE.phoneAltDisplay || SITE.phoneAlt) +
       "</a></li>" +
-      '<li><a href="tel:' +
-      SITE.phoneLandlineTel +
-      '"><span>Landline</span> ' +
-      SITE.phoneLandline +
-      "</a></li>" +
       "</ul></div>" +
       '<div class="connect-crown__directory">' +
       sectionsHtml +
@@ -468,7 +463,7 @@
           '" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">Review on Google</a>'
         : "") +
       "</div></div>" +
-      '<figure class="connect-review-cta__img" aria-hidden="true"><img src="images/pi32.png" alt="" loading="lazy"></figure></div>';
+      '<figure class="connect-review-cta__img" aria-hidden="true"><img src="images/pi32.png" alt="" role="presentation" loading="lazy"></figure></div>';
   }
 
   function renderFooterIcons() {
@@ -521,11 +516,11 @@
           .map(
             (p) =>
               '<article class="services-homoeo-card reveal">' +
-              '<div class="services-homoeo-card__media"><img src="' +
-              p.src +
-              '" alt="' +
-              p.name +
-              '" loading="lazy" width="280" height="360"></div>' +
+              '<div class="services-homoeo-card__media">' +
+              (typeof SITE !== "undefined" && SITE.imgHtml
+                ? SITE.imgHtml(p.src, { alt: p.name, width: 280, height: 360, loading: "lazy" })
+                : '<img src="' + p.src + '" alt="' + p.name + '" loading="lazy" width="280" height="360">') +
+              "</div>" +
               "<h3>" +
               p.name +
               "</h3><p>" +
@@ -549,11 +544,11 @@
       items
         .map(
           (p) =>
-            '<article class="homoeo-product-card"><img src="' +
-            p.src +
-            '" alt="' +
-            p.name +
-            '" loading="lazy" width="280" height="360"><h3>' +
+            '<article class="homoeo-product-card">' +
+            (typeof SITE !== "undefined" && SITE.imgHtml
+              ? SITE.imgHtml(p.src, { alt: p.name, width: 280, height: 360, loading: "lazy" })
+              : '<img src="' + p.src + '" alt="' + p.name + '" loading="lazy" width="280" height="360">') +
+            "<h3>" +
             p.name +
             "</h3><p>" +
             p.desc +

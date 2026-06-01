@@ -4,77 +4,178 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book appointment · Patel Clinic</title>
-  <meta name="description" content="Book a visit at Patel Clinic, Gayatrinagar, Rajkot.">
+  <meta name="description" content="Book a visit at Patel Clinic, Gayatrinagar, Rajkot. WhatsApp booking in under a minute — Dr. Hiren & Dr. K. M. Patel.">
   <link rel="icon" href="images/patel2.jpeg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/premium.css">
+  <link rel="stylesheet" href="css/bundles/site-base.bundle.css?v=4">
   <link rel="stylesheet" href="css/pages.css">
-  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/crown.css">
+  <link rel="stylesheet" href="css/core-a11y.css">
+  <link rel="stylesheet" href="css/appointment-hero.css">
+  <link rel="stylesheet" href="css/appointment-page.css">
+  <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body data-page="appointment">
   <header id="site-header"></header>
   <main>
-    <section class="page-hero page-hero--focus">
-      <div class="container page-hero--focus__grid">
-        <div class="page-hero__copy reveal">
-          <nav class="page-hero__crumb" aria-label="Breadcrumb">
-            <a href="index.html">Home</a>
-            <span aria-hidden="true">/</span>
-            <span aria-current="page">Appointment</span>
-          </nav>
-          <span class="hero-pill" style="background:var(--brand-red-soft);border-color:rgba(185,28,60,.2);color:var(--brand-red)">Book in 60 seconds</span>
-          <h1>Reserve your visit <span class="page-hero__accent">in under a minute.</span></h1>
-          <p class="page-hero__lead">Fill the form below — we open WhatsApp with your details so booking takes one tap.</p>
-          <div class="page-hero__actions">
-            <a href="#appointment-form" class="btn btn-primary btn--lg">Start booking</a>
-            <a href="tel:+919978815066" class="btn btn-outline">Call 99788 15066</a>
+    <section class="appt-hero" aria-label="Book an appointment">
+      <div class="appt-hero__bg" aria-hidden="true">
+        <div class="appt-hero__mesh"></div>
+        <div class="appt-hero__grain"></div>
+      </div>
+
+      <div class="appt-hero__stage">
+        <div class="appt-hero__grid">
+          <div class="appt-hero__copy reveal">
+            <nav class="appt-hero__crumb" aria-label="Breadcrumb">
+              <a href="index.html">Home</a>
+              <span aria-hidden="true">/</span>
+              <span aria-current="page">Appointment</span>
+            </nav>
+            <div class="appt-hero__crest">
+              <span class="appt-hero__crest-icon" aria-hidden="true">✦</span>
+              <span>Book in 60 seconds</span>
+            </div>
+            <h1>Reserve your visit <em>in under a minute.</em></h1>
+            <p class="appt-hero__lead">Fill the form below — we open WhatsApp with your details so booking takes one tap. Confirmation during clinic hours.</p>
+            <div class="appt-hero__cta">
+              <a href="#appointment-form" class="appt-hero__btn appt-hero__btn--primary">Start booking</a>
+              <a href="tel:+919978815066" class="appt-hero__btn appt-hero__btn--ghost" id="appt-hero-call">Call 99788 15066</a>
+            </div>
+          </div>
+
+          <ol class="appt-hero__steps reveal" aria-label="How booking works">
+            <li class="appt-hero__step">
+              <span class="appt-hero__step-num" aria-hidden="true">1</span>
+              <div><strong>Your details</strong><span>Name, phone &amp; preferred service</span></div>
+            </li>
+            <li class="appt-hero__step">
+              <span class="appt-hero__step-num" aria-hidden="true">2</span>
+              <div><strong>Pick a date</strong><span>Choose when you would like to visit</span></div>
+            </li>
+            <li class="appt-hero__step">
+              <span class="appt-hero__step-num" aria-hidden="true">3</span>
+              <div><strong>WhatsApp confirm</strong><span>We reply during clinic hours</span></div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="appt-hero__ribbon reveal" aria-label="Clinic highlights">
+          <div class="appt-hero__stat">
+            <span class="appt-hero__stat-value appt-hero__stat-value--accent">60s</span>
+            <span class="appt-hero__stat-label">Typical booking</span>
+          </div>
+          <div class="appt-hero__stat">
+            <span class="appt-hero__stat-value">2</span>
+            <span class="appt-hero__stat-label">Full-time doctors</span>
+          </div>
+          <div class="appt-hero__stat">
+            <span class="appt-hero__stat-value">6</span>
+            <span class="appt-hero__stat-label">Days open weekly</span>
+          </div>
+          <div class="appt-hero__stat">
+            <span class="appt-hero__stat-value">44+</span>
+            <span class="appt-hero__stat-label">Years in Rajkot</span>
           </div>
         </div>
-        <ol class="page-hero--focus__steps reveal">
-          <li class="page-hero--focus__step">
-            <span class="page-hero--focus__step-num">1</span>
-            <div><strong>Your details</strong><span>Name, phone &amp; preferred service</span></div>
-          </li>
-          <li class="page-hero--focus__step">
-            <span class="page-hero--focus__step-num">2</span>
-            <div><strong>Pick a date</strong><span>Choose when you would like to visit</span></div>
-          </li>
-          <li class="page-hero--focus__step">
-            <span class="page-hero--focus__step-num">3</span>
-            <div><strong>WhatsApp confirm</strong><span>We reply during clinic hours</span></div>
-          </li>
-        </ol>
       </div>
     </section>
-    <section class="section appt-section">
-      <div class="container appt-page__grid">
-      <form class="form-card form-card--luxury reveal" id="appointment-form">
-        <h2>Book a visit</h2>
-        <p style="font-size:0.875rem;color:var(--muted-text);margin-bottom:1.5rem">Submit to continue on WhatsApp with your details.</p>
-        <div class="form-grid cols-2">
-          <div><label for="name">Full name</label><input id="name" name="name" required placeholder="e.g. Priya Sharma" autocomplete="name"></div>
-          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required placeholder="+91 ..." autocomplete="tel"></div>
+
+    <section class="appt-atlas appt-atlas--quick" aria-label="Quick actions">
+      <div class="container">
+        <div class="appt-quick reveal">
+          <a href="#appointment-form" class="appt-quick__card">
+            <span class="appt-quick__icon" aria-hidden="true">📅</span>
+            <strong>Book online</strong>
+            <span>WhatsApp form below</span>
+          </a>
+          <a href="tel:+919978815066" class="appt-quick__card" id="appt-quick-hiren">
+            <span class="appt-quick__icon" aria-hidden="true">📞</span>
+            <strong>Call Dr. Hiren</strong>
+            <span>99788 15066</span>
+          </a>
+          <a href="#" class="appt-quick__card" id="appt-quick-wa">
+            <span class="appt-quick__icon" aria-hidden="true">💬</span>
+            <strong>WhatsApp</strong>
+            <span>Message the clinic</span>
+          </a>
+          <a href="faq.html" class="appt-quick__card">
+            <span class="appt-quick__icon" aria-hidden="true">❓</span>
+            <strong>FAQ</strong>
+            <span>Visits &amp; emergencies</span>
+          </a>
         </div>
-        <div class="form-grid cols-2" style="margin-top:1rem">
-          <div><label for="service">Service</label><select id="service" name="service" required><option value="" disabled selected>Select a service</option></select></div>
-          <div><label for="date">Preferred date</label><input id="date" name="date" type="date" required></div>
-        </div>
-        <div style="margin-top:1rem"><label for="message">Message <span style="font-weight:400;color:var(--muted-text)">(optional)</span></label><textarea id="message" name="message" rows="4" placeholder="Symptoms, preferred time, or questions"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="margin-top:1.25rem;width:100%">💬 Continue on WhatsApp</button>
-        <p class="form-success form-note" hidden role="status">WhatsApp opened in a new tab. If nothing happened, check your popup blocker.</p>
-        <p class="form-note">Typical confirmation within one business hour on clinic days.</p>
-      </form>
+      </div>
+    </section>
+
+    <section class="appt-atlas appt-atlas--form" aria-label="Appointment form">
+      <div class="container appt-form-layout">
+        <form class="appt-form-card reveal" id="appointment-form" novalidate>
+          <h2>Book a visit</h2>
+          <p class="appt-form-card__sub">Submit to continue on WhatsApp with your details pre-filled.</p>
+          <div class="form-grid cols-2">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" name="name" required placeholder="e.g. Priya Sharma" autocomplete="name">
+            </div>
+            <div>
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel">
+            </div>
+          </div>
+          <div class="form-grid cols-2" style="margin-top:1rem">
+            <div>
+              <label for="service">Service</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>Select a service</option>
+              </select>
+            </div>
+            <div>
+              <label for="date">Preferred date</label>
+              <input id="date" name="date" type="date" required>
+            </div>
+          </div>
+          <div style="margin-top:1rem">
+            <label for="message">Message <span style="font-weight:400;color:var(--muted-text)">(optional)</span></label>
+            <textarea id="message" name="message" rows="4" placeholder="Symptoms, preferred time, or questions"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Continue on WhatsApp</button>
+          <p class="form-success form-note" hidden role="status">WhatsApp opened in a new tab. If nothing happened, check your popup blocker.</p>
+          <p class="form-note">Typical confirmation within one business hour on clinic days.</p>
+        </form>
+
+        <aside class="appt-aside reveal" aria-label="Clinic information">
+          <div class="appt-aside__panel">
+            <h3>What to bring</h3>
+            <ul>
+              <li>Previous prescriptions or reports (if any)</li>
+              <li>Government ID for insurance paperwork</li>
+              <li>List of current medicines</li>
+            </ul>
+          </div>
+          <div class="appt-aside__panel appt-aside__hours">
+            <h3>Clinic hours</h3>
+            <p>OPD · Gayatrinagar, Rajkot</p>
+            <ul class="hours-list" id="hours-list-appt"></ul>
+          </div>
+          <div class="appt-aside__panel">
+            <h3>Need directions?</h3>
+            <p data-site-address></p>
+            <p style="margin-top:0.75rem"><a href="contact.html#visit-map" class="btn btn-outline" style="width:100%">View map &amp; contact</a></p>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
   <footer id="site-footer"></footer>
   <div class="floating-actions"></div>
-  <script src="js/site-config.js"></script>
-  <script src="js/connect-ui.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/hero-ui.js"></script>
-  <script>
-    document.querySelectorAll("[data-site-address]").forEach(function(el) { el.textContent = SITE.address; });
-  </script>
+  <script src="js/site-config.js?v=5"></script>
+  <script src="js/seo.js" defer></script>
+  <script src="js/connect-ui.js" defer></script>
+  <script src="js/main.js?v=4" defer></script>
 </body>
 </html>

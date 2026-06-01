@@ -65,7 +65,7 @@
       </div>
       <div class="mobile-menu mobile-menu--luxury" id="mobile-menu" aria-hidden="true">
         <p class="mobile-menu__label">Menu</p>
-        ${mobileLinks}
+        <nav class="mobile-menu__nav" aria-label="Mobile">${mobileLinks}</nav>
         <div class="mobile-menu__actions">
           <a href="appointment.html" class="header-btn header-btn--primary">${ICON_CALENDAR}<span>Book appointment</span></a>
           <a href="tel:${SITE.phoneTel}" class="header-btn header-btn--ghost">${ICON_PHONE}<span>${SITE.phoneDisplay}</span></a>
@@ -184,7 +184,9 @@
                     ? " site-header--faq"
                     : page === "contact"
                       ? " site-header--contact"
-                      : "");
+                      : page === "appointment"
+                        ? " site-header--appointment"
+                        : "");
       header.innerHTML = renderHeader(page);
     }
     syncHomeTopOffset();
@@ -193,23 +195,8 @@
       footer.innerHTML = renderFooter();
     }
 
-    const toggle = document.getElementById("nav-toggle");
-    const menu = document.getElementById("mobile-menu");
-    if (toggle && menu) {
-      const closeMenu = () => {
-        menu.classList.remove("open");
-        menu.setAttribute("aria-hidden", "true");
-        toggle.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("header-menu-open");
-      };
-      toggle.addEventListener("click", () => {
-        const open = !menu.classList.contains("open");
-        menu.classList.toggle("open", open);
-        menu.setAttribute("aria-hidden", open ? "false" : "true");
-        toggle.setAttribute("aria-expanded", open);
-        document.body.classList.toggle("header-menu-open", open);
-      });
-      menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+    if (typeof SITE.initMobileMenu === "function") {
+      SITE.initMobileMenu();
     }
 
     const headerEl = document.querySelector(".site-header");
@@ -628,6 +615,22 @@
     });
   }
 
+  function initAppointmentPage() {
+    const wa = document.getElementById("appt-quick-wa");
+    if (wa) {
+      wa.href = waLink("Hello, I would like to book an appointment at Patel Clinic.");
+      wa.target = "_blank";
+      wa.rel = "noopener noreferrer";
+    }
+    const callHero = document.getElementById("appt-hero-call");
+    if (callHero) callHero.href = "tel:" + SITE.phoneTel;
+    const callQuick = document.getElementById("appt-quick-hiren");
+    if (callQuick) callQuick.href = "tel:" + SITE.phoneTel;
+
+    renderHoursList(document.getElementById("hours-list-appt"));
+    initAppointmentForm();
+  }
+
   function initAppointmentForm() {
     const form = document.getElementById("appointment-form");
     if (!form) return;
@@ -644,6 +647,13 @@
       other.value = "Other / unsure";
       other.textContent = "Other / unsure";
       serviceSelect.appendChild(other);
+    }
+
+    const dateInput = form.querySelector('[name="date"]');
+    if (dateInput) {
+      const today = new Date();
+      const iso = today.toISOString().slice(0, 10);
+      dateInput.min = iso;
     }
 
     form.addEventListener("submit", (e) => {
@@ -1203,7 +1213,7 @@
     initReveal();
     initStats();
     initTestimonialSlider();
-    initAppointmentForm();
+    initAppointmentPage();
     initFaqPage();
     initContactPage();
     renderClinicImagesGrid(document.getElementById("clinic-images-grid"), true);

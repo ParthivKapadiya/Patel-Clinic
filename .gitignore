@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# Patel Clinic — full-size review videos (site uses images/optimized/ only)
+/images/pv*.mp4
+!images/optimized/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -1,5 +1,4 @@
-/* Patel Clinic — connect hub, platform links & review CTAs */
-@import url("connect-crown.css");
+/* Patel Clinic — connect hub, platform links & review CTAs (load connect-crown.css before this file) */
 
 .connect-strip {
   padding: 1rem 0 0;
@@ -454,11 +453,17 @@
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
 }
 
+.homoeo-product-card picture,
 .homoeo-product-card img {
   width: min(200px, 100%);
   height: auto;
   margin: 0 auto 1rem;
   display: block;
+}
+
+.homoeo-product-card picture img {
+  width: 100%;
+  height: auto;
 }
 
 .homoeo-product-card h3 {

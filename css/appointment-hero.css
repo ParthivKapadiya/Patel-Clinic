@@ -1,0 +1,318 @@
+/* Patel Clinic — Appointment page hero */
+
+body[data-page="appointment"] {
+  --appt-hero-pad: clamp(2rem, 4vw, 3rem);
+}
+
+body[data-page="appointment"] .appt-hero {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(165deg, #080c18 0%, var(--navy) 42%, #142238 100%);
+  isolation: isolate;
+}
+
+body[data-page="appointment"] .appt-hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+body[data-page="appointment"] .appt-hero__mesh {
+  position: absolute;
+  inset: -10% -5%;
+  background:
+    radial-gradient(ellipse 45% 40% at 10% 30%, rgba(12, 122, 122, 0.2), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 90% 20%, rgba(201, 169, 98, 0.22), transparent 55%);
+}
+
+body[data-page="appointment"] .appt-hero__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+body[data-page="appointment"] .appt-hero__stage {
+  position: relative;
+  z-index: 1;
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: calc(var(--nav-h, 5.75rem) + 1.25rem) clamp(1rem, 4vw, 2.5rem) var(--appt-hero-pad);
+}
+
+body[data-page="appointment"] .appt-hero__grid {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 1.75rem;
+}
+
+@media (min-width: 900px) {
+  body[data-page="appointment"] .appt-hero__grid {
+    grid-template-columns: 1fr minmax(260px, 320px);
+    gap: 2.5rem;
+    align-items: center;
+  }
+}
+
+body[data-page="appointment"] .appt-hero__crumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+body[data-page="appointment"] .appt-hero__crumb a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+}
+
+body[data-page="appointment"] .appt-hero__crumb a:hover {
+  color: var(--gold, #c9a962);
+}
+
+body[data-page="appointment"] .appt-hero__crest {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.85rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(185, 28, 60, 0.2);
+  border: 1px solid rgba(185, 28, 60, 0.35);
+  border-radius: 999px;
+}
+
+body[data-page="appointment"] .appt-hero__crest-icon {
+  color: #f4a9b8;
+}
+
+body[data-page="appointment"] .appt-hero h1 {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+body[data-page="appointment"] .appt-hero h1 em {
+  font-style: italic;
+  color: var(--gold, #c9a962);
+}
+
+body[data-page="appointment"] .appt-hero__lead {
+  margin: 0 0 1.5rem;
+  max-width: 36rem;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+body[data-page="appointment"] .appt-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+body[data-page="appointment"] .appt-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.35rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+body[data-page="appointment"] .appt-hero__btn--primary {
+  color: var(--navy);
+  background: linear-gradient(135deg, #f5e6c8, var(--gold, #c9a962));
+  box-shadow: 0 12px 32px -8px rgba(201, 169, 98, 0.55);
+}
+
+body[data-page="appointment"] .appt-hero__btn--ghost {
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body[data-page="appointment"] .appt-hero__btn:hover {
+  transform: translateY(-2px);
+}
+
+body[data-page="appointment"] .appt-hero__steps {
+  margin: 0;
+  padding: 1.35rem;
+  list-style: none;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+}
+
+body[data-page="appointment"] .appt-hero__step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body[data-page="appointment"] .appt-hero__step:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+body[data-page="appointment"] .appt-hero__step:first-child {
+  padding-top: 0;
+}
+
+body[data-page="appointment"] .appt-hero__step-num {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font, "Plus Jakarta Sans", system-ui, sans-serif);
+  font-size: 1rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: #0c1222;
+  background: linear-gradient(145deg, #e8d4b8 0%, #c9a962 55%, #b8956c 100%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+body[data-page="appointment"] .appt-hero__step strong {
+  display: block;
+  font-size: 0.9375rem;
+  color: #fff;
+}
+
+body[data-page="appointment"] .appt-hero__step span {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+body[data-page="appointment"] .appt-hero__ribbon {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  padding: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 640px) {
+  body[data-page="appointment"] .appt-hero__ribbon {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+body[data-page="appointment"] .appt-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 1.1rem 0.75rem;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  body[data-page="appointment"] .appt-hero__stat {
+    border-right: 1px solid rgba(12, 18, 34, 0.08);
+  }
+
+  body[data-page="appointment"] .appt-hero__stat:last-child {
+    border-right: none;
+  }
+}
+
+body[data-page="appointment"] .appt-hero__stat-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.1;
+}
+
+body[data-page="appointment"] .appt-hero__stat-value--accent {
+  color: #0c7a7a;
+}
+
+body[data-page="appointment"] .appt-hero__stat-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+}
+
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) {
+  background: transparent;
+  border-bottom: none;
+}
+
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .header-shell {
+  background: rgba(8, 12, 22, 0.38);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  margin: 0.75rem clamp(0.75rem, 3vw, 2rem) 0;
+  padding-left: 1.25rem;
+  padding-right: 1rem;
+}
+
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .logo__copy strong,
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .logo__copy span,
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .nav-links a,
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .header-btn--ghost {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .nav-links a:hover,
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .nav-links a.active {
+  color: var(--gold, #c9a962);
+}
+
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .nav-toggle__bars,
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .nav-toggle__bars::before,
+body[data-page="appointment"] .site-header--prestige:not(.scrolled) .nav-toggle__bars::after {
+  background: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-page="appointment"] .appt-hero__btn:hover {
+    transform: none;
+  }
+}

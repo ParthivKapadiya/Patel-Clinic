@@ -435,16 +435,17 @@
   transform: rotate(-45deg);
 }
 
-/* —— Mobile menu —— */
+/* —— Mobile menu (appended to body in JS — avoids header clip after scroll) —— */
 .mobile-menu--luxury {
   display: none;
   position: fixed;
-  top: var(--nav-h);
+  top: var(--menu-top, var(--nav-h));
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 199;
-  padding: 1.5rem var(--header-pad-x) 2rem;
+  z-index: 250;
+  padding: 1.5rem var(--header-pad-x) max(2rem, env(safe-area-inset-bottom));
+  padding-top: 1.25rem;
   background: linear-gradient(
     165deg,
     rgba(12, 18, 34, 0.98) 0%,
@@ -460,7 +461,15 @@
 .mobile-menu--luxury.open {
   display: flex;
   flex-direction: column;
+  min-height: 0;
   animation: headerMenuIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu--luxury.open .mobile-menu__nav {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes headerMenuIn {
@@ -491,6 +500,12 @@
   text-transform: uppercase;
   color: var(--gold);
   margin: 0 0 1rem;
+  flex-shrink: 0;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
 }
 
 .mobile-menu--luxury a {
@@ -521,6 +536,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  flex-shrink: 0;
 }
 
 .mobile-menu__actions .header-btn {

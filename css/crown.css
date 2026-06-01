@@ -312,21 +312,17 @@ body[data-page="home"] .hero__scroll-cue {
    FACILITIES — bento excellence
    ═══════════════════════════════════════════ */
 body[data-page="home"] .home-prestige-facilities {
-  margin-top: -4.5rem;
-  padding: 0 0 clamp(3rem, 6vw, 5rem);
-  z-index: 5;
+  margin-top: 0;
+  padding: clamp(2.25rem, 6vw, 3.5rem) 0 clamp(3rem, 6vw, 5rem);
+  position: relative;
+  background: var(--bg, #f8f6f2);
 }
 
 body[data-page="home"] .prestige-facilities__wrap {
   position: relative;
 }
 
-body[data-page="home"] .prestige-facilities__head {
-  text-align: center;
-  max-width: 36rem;
-  margin: 0 auto 2rem;
-  padding-top: 1rem;
-}
+/* Title block — see css/home-readable-heads.css */
 
 body[data-page="home"] .prestige-facilities__eyebrow {
   display: inline-flex;
@@ -337,7 +333,7 @@ body[data-page="home"] .prestige-facilities__eyebrow {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--crown-gold);
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.5rem;
 }
 
 body[data-page="home"] .prestige-facilities__eyebrow::before,
@@ -357,13 +353,16 @@ body[data-page="home"] .prestige-facilities__head h2 {
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 600;
   color: var(--navy);
-  line-height: 1.15;
+  line-height: 1.28;
   margin: 0;
+  overflow: visible;
 }
 
 body[data-page="home"] .prestige-facilities__head h2 em {
   font-style: italic;
   color: var(--brand-red);
+  display: inline;
+  padding-bottom: 0.05em;
 }
 
 body[data-page="home"] .prestige-facilities__grid {

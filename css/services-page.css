@@ -265,6 +265,11 @@ body[data-page="services"] .services-homoeo-card__media {
   margin-bottom: 0.85rem;
 }
 
+body[data-page="services"] .services-homoeo-card__media picture {
+  display: block;
+  width: 100%;
+}
+
 body[data-page="services"] .services-homoeo-card__media img {
   width: 100%;
   aspect-ratio: 3 / 4;
