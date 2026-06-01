@@ -1,0 +1,16 @@
+# Cloudflare Workers/Pages — do not upload these as static assets
+.git
+.git/**
+.wrangler
+.dev.vars
+node_modules
+.tmp-css-build
+.DS_Store
+*.log
+site.url
+docs
+snippets
+scripts
+netlify.toml
+site.url.example
+README.md

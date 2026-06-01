@@ -1,0 +1,8 @@
+# Cloudflare Pages — Patel Clinic static site
+name = "patel"
+compatibility_date = "2026-06-01"
+pages_build_output_dir = "."
+
+[assets]
+directory = "."
+# .assetsignore excludes .git, scripts, docs, etc. (25 MiB max per file)

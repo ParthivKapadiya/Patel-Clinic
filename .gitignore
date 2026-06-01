@@ -23,6 +23,10 @@
 # misc
 .DS_Store
 *.pem
+.tmp-css-build/
+.wrangler/
+.dev.vars*
+site.url
 
 # Patel Clinic — full-size review videos (site uses images/optimized/ only)
 /images/pv*.mp4

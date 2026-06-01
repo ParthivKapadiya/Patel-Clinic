@@ -108,6 +108,8 @@ git add -A && git commit -m "Production domain" && git push
 
 | Problem | Fix |
 |--------|-----|
+| **Asset too large** `.git/objects/pack/...` | Push the latest repo — it includes **`.assetsignore`** so Cloudflare skips `.git`. Then **Retry deployment**. |
+| **Asset too large** single `.mp4` over 25 MB | Run `./scripts/compress-videos.sh` — each file must be **under 25 MB**. |
 | Build fails | Check **Build log**. Ensure `scripts/build-css-bundles.sh` is executable (Cloudflare runs bash on Linux). |
 | 404 on pages | **Build output directory** must be root (`/`), not `dist`. |
 | Images/videos missing | Confirm `images/` is committed and pushed to GitHub. |
