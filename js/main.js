@@ -1022,7 +1022,7 @@
           <span class="atlas-team-card__shine" aria-hidden="true"></span>
         </div>
         <div class="atlas-team-card__body">
-          <span class="atlas-team-card__badge">${i === 0 ? "BHMS · Homoeopathy" : "MBBS · Physician"}</span>
+          <span class="atlas-team-card__badge">${m.badge || (i === 0 ? "BHMS · Homoeopathy" : "MBBS · Physician")}</span>
           <h3>${m.name}</h3>
           <p class="atlas-team-card__role">${m.role}</p>
           ${m.qualifications ? `<p class="atlas-team-card__qual">${m.qualifications}</p>` : ""}

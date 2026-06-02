@@ -1,7 +1,7 @@
 /** Patel Clinic — official details from signage, business card & flyer */
 /** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
-  assetVersion: "5",
+  assetVersion: "6",
   name: "Patel Clinic",
   /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
   siteUrl: "https://patel-clinic.netlify.app",
@@ -98,9 +98,9 @@ const SITE = {
     },
     {
       id: "homeopathic",
-      title: "Homeopathic Physician & Surgery",
+      title: "Family & Emergency Physician & Surgery",
       short:
-        "Dr. Hiren K. Patel — BHMS, PGDHM, CCH, CSD. Homeopathic physician & surgeon. Ex. M.O. Madhuram & Wockhardt Hospital.",
+        "Dr. Hiren K. Patel — BHMS, PGDHM, CCH, CSD. Family & emergency physician & surgeon. Ex. M.O. Madhuram & Wockhardt Hospital.",
     },
     {
       id: "diabetes-clinic",
@@ -180,7 +180,8 @@ const SITE = {
   team: [
     {
       name: "Dr. Hiren K. Patel",
-      role: "Homeopathic Physician & Surgeon",
+      badge: "Family & Emergency · Physician & Surgeon",
+      role: "Family & Emergency Physician & Surgeon",
       qualifications: "BHMS, PGDHM, CCH, CSD",
       phone: "99788 15066",
       bio: "Homoeopathic consultant with 15+ years of practice. BHMS from District Homoeopathy, Ratlam (2008). Medical Officer — Madhuram Hospital. Ex. M.O. Wockhardt Hospital. Vaccination, ECG, nebulizer, minor surgery, stitches, home visit & homoeopathic care.",
@@ -189,6 +190,7 @@ const SITE = {
     },
     {
       name: "Dr. K. M. Patel",
+      badge: "MBBS · Physician",
       role: "Family Physician & Surgeon",
       qualifications: "MBBS, RCGP",
       phone: "98252 45002",
@@ -246,7 +248,7 @@ const SITE = {
     {
       category: "doctors",
       q: "What are Dr. Hiren K. Patel's qualifications?",
-      a: "BHMS, PGDHM, CCH, CSD — Homeopathic Physician & Surgeon. Ex. Medical Officer at Madhuram & Wockhardt Hospital.",
+      a: "BHMS, PGDHM, CCH, CSD — Family & Emergency Physician & Surgeon. Ex. Medical Officer at Madhuram & Wockhardt Hospital.",
     },
     {
       category: "visits",

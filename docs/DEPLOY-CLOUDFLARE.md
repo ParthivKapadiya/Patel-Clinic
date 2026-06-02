@@ -108,6 +108,7 @@ git add -A && git commit -m "Production domain" && git push
 
 | Problem | Fix |
 |--------|-----|
+| **ERR_SSL_VERSION_OR_CIPHER_MISMATCH** on `*.workers.dev` | Wait **15–60 minutes** (new SSL cert). Also try the **`*.pages.dev`** URL under **Domains** tab. Use **Visit** on Overview. Try incognito. |
 | **Asset too large** `.git/objects/pack/...` | Push the latest repo — it includes **`.assetsignore`** so Cloudflare skips `.git`. Then **Retry deployment**. |
 | **Asset too large** single `.mp4` over 25 MB | Run `./scripts/compress-videos.sh` — each file must be **under 25 MB**. |
 | Build fails | Check **Build log**. Ensure `scripts/build-css-bundles.sh` is executable (Cloudflare runs bash on Linux). |
