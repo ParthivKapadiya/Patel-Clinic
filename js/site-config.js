@@ -1,7 +1,7 @@
 /** Patel Clinic — official details from signage, business card & flyer */
 /** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
-  assetVersion: "6",
+  assetVersion: "7",
   name: "Patel Clinic",
   /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
   siteUrl: "https://patel-clinic.netlify.app",
@@ -512,6 +512,11 @@ const PATIENT_PHOTO_NUMBERS = [
   32,
   34,
   35,
+  36,
+  37,
+  38,
+  39,
+  40,
 ];
 
 SITE.patientPhotos = PATIENT_PHOTO_NUMBERS.map((n) => {
