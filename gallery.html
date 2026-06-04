@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"></noscript>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bundles/site-base.bundle.css?v=4">
+  <link rel="stylesheet" href="css/bundles/site-base.bundle.css?v=8">
   <link rel="stylesheet" href="css/pages.css">
   <link rel="stylesheet" href="css/crown.css">
   <link rel="stylesheet" href="css/gallery-hero.css">
@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="css/media.css">
   <link rel="stylesheet" href="css/core-a11y.css">
   <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/theme-revision.css?v=13">
+  <link rel="stylesheet" href="css/gallery-revision.css?v=9">
 </head>
 <body data-page="gallery">
   <header id="site-header"></header>
@@ -43,12 +45,12 @@
               <span>50+ photographs · Gayatrinagar</span>
             </div>
             <h1>A visual journey through <em>four decades.</em></h1>
-            <p class="gallery-hero__lead">Storefront, facilities, patient care, and homoeopathic pharmacy — curated from our clinic, not a generic stock slideshow.</p>
+            <p class="gallery-hero__lead">Real photographs from Gayatrinagar — storefront first, then facilities, patient care, and pharmacy products. No stock imagery.</p>
             <div class="gallery-hero__cta">
-              <a href="#gallery-curated" class="gallery-hero__btn gallery-hero__btn--primary">Browse gallery</a>
+              <a href="#official" class="gallery-hero__btn gallery-hero__btn--primary">Browse gallery</a>
               <a href="testimonials.html" class="gallery-hero__btn gallery-hero__btn--ghost">Patient reviews</a>
             </div>
-            <a href="#gallery-curated" class="gallery-hero__scroll reveal" aria-label="Scroll to gallery">
+            <a href="#official" class="gallery-hero__scroll reveal" aria-label="Scroll to gallery">
               <span>Explore</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
             </a>
@@ -60,7 +62,7 @@
         <div class="gallery-hero__ribbon reveal" aria-label="Gallery highlights">
           <div class="gallery-hero__stat">
             <span class="gallery-hero__stat-value gallery-hero__stat-value--accent" data-gallery-total>50+</span>
-            <span class="gallery-hero__stat-label">Total images</span>
+            <span class="gallery-hero__stat-label">Photographs</span>
           </div>
           <div class="gallery-hero__stat">
             <span class="gallery-hero__stat-value">4</span>
@@ -70,27 +72,11 @@
             <span class="gallery-hero__stat-value" data-media-videos>9</span>
             <span class="gallery-hero__stat-label">Video reviews</span>
           </div>
-          <div class="gallery-hero__stat">
-            <span class="gallery-hero__stat-value">44+</span>
-            <span class="gallery-hero__stat-label">Years in Rajkot</span>
-          </div>
         </div>
       </div>
     </section>
 
-    <section class="gallery-curated" id="gallery-curated" aria-label="Curator's selection">
-      <div class="gallery-curated__glow" aria-hidden="true"></div>
-      <div class="container gallery-curated__inner">
-        <header class="gallery-curated__head reveal">
-          <p class="gallery-curated__eyebrow">Curator's selection</p>
-          <h2>Five photographs that tell our story.</h2>
-          <p>Tap any image to open the lightbox — then browse full collections below.</p>
-        </header>
-        <div class="gallery-atlas-spotlight reveal" id="gallery-spotlight" aria-label="Featured photographs"></div>
-      </div>
-    </section>
-
-    <section class="gallery-atlas gallery-atlas--main" aria-label="Photo collections">
+    <section class="gallery-atlas gallery-atlas--main" aria-label="Photo collections" id="gallery-main">
       <div class="gallery-atlas-toolbar-wrap" id="gallery-toolbar-wrap">
         <div class="container">
           <div class="gallery-atlas-toolbar reveal">
@@ -102,9 +88,9 @@
 
       <div class="container">
         <header class="gallery-atlas__intro reveal">
-          <p class="gallery-atlas__eyebrow">Full archive</p>
+          <p class="gallery-atlas__eyebrow">Photo archive</p>
           <h2>Every corner of Patel Clinic.</h2>
-          <p>Official branding, facilities, patient care, and homoeopathic pharmacy — organised so you can jump straight to what matters.</p>
+          <p>Start with branding &amp; signage, then facilities and care moments. Pharmacy products are listed separately at the end.</p>
         </header>
 
         <div id="gallery-sections" class="gallery-page-sections"></div>
@@ -116,10 +102,12 @@
         <header class="gallery-reels__head reveal">
           <p class="gallery-reels__eyebrow">Moving stories</p>
           <h2>Hear from patients on video.</h2>
-          <p>Real reviews filmed at our Gayatrinagar clinic — watch the full collection on the testimonials page.</p>
-          <a href="testimonials.html" class="gallery-reels__link">All video reviews →</a>
+          <p>Three featured reviews from our Gayatrinagar clinic — open the full collection on the testimonials page.</p>
         </header>
-        <div class="gallery-reels__grid gallery-video-showcase video-showcase reveal" id="gallery-reels-grid" aria-label="Patient video reviews"></div>
+        <div class="gallery-reels__grid gallery-video-showcase video-showcase reveal" id="gallery-reels-grid" aria-label="Featured patient video reviews" data-gallery-videos-max="3"></div>
+        <p class="gallery-reels__more reveal">
+          <a href="testimonials.html" class="gallery-reels__link">Watch all video reviews →</a>
+        </p>
       </div>
     </section>
 
@@ -142,10 +130,10 @@
   </main>
   <footer id="site-footer"></footer>
   <div class="floating-actions"></div>
-  <script src="js/site-config.js?v=7"></script>
+  <script src="js/site-config.js?v=11"></script>
   <script src="js/seo.js" defer></script>
   <script src="js/connect-ui.js" defer></script>
-  <script src="js/main.js?v=7" defer></script>
+  <script src="js/main.js?v=10" defer></script>
   <script src="js/media-ui.js" defer></script>
 </body>
 </html>

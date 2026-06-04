@@ -1,0 +1,57 @@
+/* Home — remove repeated content (see index.html trims) */
+
+/* Hero: doctor chips stay; stats/address/extra photo live in sections below */
+@media (max-width: 767px) {
+  body[data-page="home"] .hero--crown .hero__headline-main {
+    font-size: clamp(2rem, 9vw, 2.75rem) !important;
+    line-height: 1.02 !important;
+  }
+
+  body[data-page="home"] .hero--crown .hero__stage {
+    padding-bottom: 3rem;
+  }
+}
+
+/* Philosophy: metrics repeat “By the numbers”; location repeats Visit us */
+body[data-page="home"] .philosophy-atlas__metrics,
+body[data-page="home"] .philosophy-atlas__tile--location {
+  display: none;
+}
+
+body[data-page="home"] .philosophy-atlas__deck {
+  max-width: 36rem;
+}
+
+/* Visit: phones + map only (address/landmark in header deck + philosophy card) */
+body[data-page="home"] .atlas-visit__card:not(.atlas-visit__card--phones) {
+  display: none;
+}
+
+body[data-page="home"] .atlas-visit__cards .atlas-cta--block {
+  margin-top: 0.5rem;
+}
+
+body[data-page="home"] .atlas-visit {
+  grid-template-columns: 1fr !important;
+}
+
+@media (min-width: 900px) {
+  body[data-page="home"] .atlas-visit {
+    grid-template-columns: minmax(0, 280px) 1fr !important;
+  }
+}
+
+body[data-page="home"] .atlas-book__hint {
+  display: none;
+}
+
+/* Shorter inner page heroes (not home) */
+body[data-page]:not([data-page="home"]) [class*="-hero"] {
+  padding-top: 3.5rem !important;
+  padding-bottom: 2.5rem !important;
+}
+
+body[data-page]:not([data-page="home"]) [class*="-hero"] [class*="__doctor"],
+body[data-page]:not([data-page="home"]) [class*="-hero"] [class*="__stats"] {
+  display: none;
+}

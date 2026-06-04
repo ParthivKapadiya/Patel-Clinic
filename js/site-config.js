@@ -1,7 +1,7 @@
 /** Patel Clinic — official details from signage, business card & flyer */
 /** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
-  assetVersion: "7",
+  assetVersion: "8",
   name: "Patel Clinic",
   /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
   siteUrl: "https://patel-clinic.netlify.app",
@@ -152,7 +152,7 @@ const SITE = {
     {
       name: "Diagnostics & procedures",
       price: "On enquiry",
-      highlighted: true,
+      highlighted: false,
       features: [
         "ECG & glucometer",
         "Nebulizer treatment",
@@ -579,26 +579,26 @@ SITE.officialGallery = [
 SITE.gallerySections = [
   {
     id: "official",
-    title: "Official branding & signage",
-    subtitle: "Storefront, logo, flyer and business materials from Patel Clinic.",
+    title: "Clinic branding & signage",
+    subtitle: "Start here — storefront, logo, and official materials so you know you have the right address.",
     items: SITE.officialGallery,
   },
   {
     id: "facility",
-    title: "Clinic & facilities",
-    subtitle: "Consultation rooms, equipment and everyday care at our Gayatrinagar centre.",
+    title: "Facilities & consultation rooms",
+    subtitle: "On-site equipment and clinic interiors at our Gayatrinagar centre.",
     items: SITE.clinicFacilityImages,
   },
   {
     id: "patient-care",
-    title: "Patient care, reviews & results",
-    subtitle: "Real photos from consultations, treatments and grateful patients in Rajkot.",
+    title: "Patient care moments",
+    subtitle: "Selected photographs from consultations and care at the clinic.",
     items: SITE.patientPhotos,
   },
   {
     id: "homoeopathy",
-    title: "Homoeopathic pharmacy",
-    subtitle: "Quality SBL homoeopathic products recommended at our clinic.",
+    title: "Pharmacy products (SBL)",
+    subtitle: "Recommended homoeopathic medicines stocked at the clinic — ask our doctors during your visit.",
     items: SITE.homoeopathicProducts.map((p) => ({
       src: p.src,
       alt: p.name + " — Patel Clinic Rajkot",

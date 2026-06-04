@@ -134,14 +134,31 @@
     const stage = document.querySelector("#media-lightbox .lightbox__stage");
     if (!stage || !lightboxItems.length) return;
     const item = lightboxItems[lightboxIndex];
+    const cap =
+      item.title || item.caption
+        ? '<figcaption class="lightbox__caption"><strong>' +
+          (item.title || "") +
+          "</strong>" +
+          (item.caption ? "<span>" + item.caption + "</span>" : "") +
+          "</figcaption>"
+        : "";
     if (item.type === "video") {
       stage.innerHTML =
         '<video src="' +
         item.src +
-        '" controls autoplay playsinline class="lightbox__media"></video>';
+        '" controls autoplay playsinline class="lightbox__media"></video>' +
+        cap;
     } else {
-      stage.innerHTML =
-        '<img src="' + item.src + '" alt="' + (item.alt || "") + '" class="lightbox__media">';
+      const img =
+        typeof SITE !== "undefined" && SITE.imgHtml
+          ? SITE.imgHtml(item.src, {
+              alt: item.alt || item.title || "Patel Clinic",
+              className: "lightbox__media",
+              loading: "eager",
+              webp: true,
+            })
+          : '<img src="' + item.src + '" alt="' + (item.alt || "") + '" class="lightbox__media">';
+      stage.innerHTML = '<figure class="lightbox__figure">' + img + cap + "</figure>";
     }
   }
 
@@ -176,6 +193,8 @@
     const payload = items.map((item) => ({
       src: item.src,
       alt: item.alt,
+      title: item.title,
+      caption: item.caption,
       type: item.type || mediaType,
     }));
     container.querySelectorAll('[data-lightbox-group="' + groupName + '"]').forEach((btn) => {
@@ -189,8 +208,39 @@
     official: "Branding",
     facility: "Facilities",
     "patient-care": "Patient care",
-    homoeopathy: "Homoeopathy",
+    homoeopathy: "Pharmacy",
   };
+
+  let galleryReservedSrc = null;
+
+  function normGallerySrc(src) {
+    return (src || "").split("?")[0];
+  }
+
+  function resetGalleryReserved() {
+    galleryReservedSrc = new Set();
+  }
+
+  function reserveGallerySrc(src) {
+    if (!galleryReservedSrc) resetGalleryReserved();
+    const key = normGallerySrc(src);
+    if (key) galleryReservedSrc.add(key);
+  }
+
+  function isGallerySrcReserved(src) {
+    return galleryReservedSrc && galleryReservedSrc.has(normGallerySrc(src));
+  }
+
+  function dedupeGalleryItems(items) {
+    const out = [];
+    items.forEach((g) => {
+      if (!g || !g.src) return;
+      if (isGallerySrcReserved(g.src)) return;
+      reserveGallerySrc(g.src);
+      out.push(g);
+    });
+    return out;
+  }
 
   const GALLERY_SECTION_THEMES = {
     official: "gallery-atlas-section--brand",
@@ -199,42 +249,47 @@
     homoeopathy: "gallery-atlas-section--pharmacy",
   };
 
-  function spotlightItems() {
-    const items = [];
-    if (SITE.clinicImages?.[0]) items.push(SITE.clinicImages[0]);
-    if (SITE.clinicFacilityImages?.[2]) items.push(SITE.clinicFacilityImages[2]);
-    if (SITE.patientPhotos?.[4]) items.push(SITE.patientPhotos[4]);
-    if (SITE.clinicFacilityImages?.[5]) items.push(SITE.clinicFacilityImages[5]);
-    if (SITE.patientPhotos?.[12]) items.push(SITE.patientPhotos[12]);
-    return items.filter(Boolean).slice(0, 5);
-  }
-
   function heroMosaicItems() {
-    const items = [
-      SITE.clinicImages?.[0],
-      SITE.officialGallery?.find((i) => i.src && i.src.indexOf("storefront") !== -1) ||
-        SITE.clinicFacilityImages?.[0],
-      SITE.clinicFacilityImages?.[2],
-      SITE.clinicImages?.[3],
-      SITE.patientPhotos?.[10],
-    ];
+    const pool = []
+      .concat(SITE.officialGallery || SITE.clinicImages || [])
+      .concat(SITE.clinicFacilityImages || [])
+      .concat(SITE.patientPhotos || []);
     const seen = new Set();
-    return items
-      .filter(Boolean)
-      .filter((g) => {
-        if (!g.src || seen.has(g.src)) return false;
-        seen.add(g.src);
-        return true;
-      })
-      .slice(0, 5);
+    const picks = [];
+    pool.forEach((g) => {
+      if (!g?.src || seen.has(g.src)) return;
+      seen.add(g.src);
+      picks.push(g);
+    });
+    return picks.slice(0, 4);
   }
 
   function filmstripItems() {
+    const mosaicSrc = new Set(heroMosaicItems().map((g) => g.src));
     const pool = []
-      .concat(SITE.clinicImages || [])
       .concat(SITE.clinicFacilityImages || [])
-      .concat(SITE.patientPhotos || []);
-    return pool.filter(Boolean).slice(0, 18);
+      .concat(SITE.patientPhotos || [])
+      .concat(SITE.officialGallery || SITE.clinicImages || []);
+    const seen = new Set(mosaicSrc);
+    const out = [];
+    pool.forEach((g) => {
+      if (!g?.src || seen.has(g.src)) return;
+      seen.add(g.src);
+      out.push(g);
+    });
+    return out.slice(0, 14);
+  }
+
+  function galleryTileCaption(g) {
+    const title = g.title || g.alt || "Photograph";
+    const sub = g.caption || "";
+    return (
+      '<span class="gallery-tile__label"><strong>' +
+      title +
+      "</strong>" +
+      (sub ? "<span>" + sub + "</span>" : "") +
+      "</span>"
+    );
   }
 
   function atlasTileModifiers(index) {
@@ -246,8 +301,9 @@
 
   function galleryImageHtml(g, opts) {
     const src = g.src || "";
-    const useWebp = opts && opts.webp === true;
     const alt = (g.alt || g.title || "Patel Clinic").replace(/"/g, "&quot;");
+    const useWebp =
+      opts && opts.webp !== false && typeof SITE !== "undefined" && SITE.hasWebp && SITE.hasWebp(src);
     if (typeof SITE !== "undefined" && SITE.imgHtml) {
       return SITE.imgHtml(src, {
         alt: g.alt || g.title || "Patel Clinic",
@@ -268,7 +324,8 @@
     );
   }
 
-  function galleryTileHtml(g, index, group, isPageAtlas) {
+  function galleryTileHtml(g, index, group, isPageAtlas, tileOpts) {
+    const opts = tileOpts || {};
     const isHomoeo = group === "homoeopathy";
     const wide =
       isPageAtlas && !isHomoeo
@@ -282,14 +339,9 @@
           ? " gallery-tile--homoeo-feature"
           : " gallery-tile--homoeo"
         : "";
-    const caption =
-      g.title && g.caption
-        ? '<span class="gallery-tile__label"><strong>' +
-          g.title +
-          "</strong><span>" +
-          g.caption +
-          "</span></span>"
-        : "";
+    const caption = galleryTileCaption(g);
+    const eager = opts && opts.eager === true;
+    const loading = eager ? "eager" : index < 4 ? "eager" : "lazy";
     return (
       '<button type="button" class="gallery-tile' +
       (isPageAtlas ? " gallery-atlas-tile" : "") +
@@ -304,8 +356,8 @@
       (g.title || "photograph") +
       '">' +
       galleryImageHtml(g, {
-        webp: !isHomoeo && typeof SITE !== "undefined" && SITE.hasWebp(g.src),
-        loading: index < 2 ? "eager" : "lazy",
+        webp: true,
+        loading: loading,
       }) +
       '<span class="gallery-tile__veil" aria-hidden="true"></span>' +
       '<span class="gallery-tile__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"/></svg></span>' +
@@ -339,7 +391,9 @@
 
   function renderGalleryHeroMosaic(container) {
     if (!container) return;
+    resetGalleryReserved();
     const items = heroMosaicItems();
+    items.forEach((g) => reserveGallerySrc(g.src));
     if (!items.length) return;
     container.innerHTML = items
       .map(
@@ -355,6 +409,7 @@
                 loading: i === 0 ? "eager" : "lazy",
                 width: 600,
                 height: 800,
+                webp: true,
               })
             : '<img src="' +
               g.src +
@@ -367,37 +422,6 @@
       )
       .join("");
     bindLightboxGroup(container, "hero-mosaic", items);
-    window.PatelReveal?.();
-  }
-
-  function renderGallerySpotlight(container) {
-    if (!container) return;
-    const items = spotlightItems();
-    if (!items.length) {
-      container.hidden = true;
-      return;
-    }
-    const isPageAtlas = container.classList.contains("gallery-atlas-spotlight");
-    const label = "";
-    const gridClass = isPageAtlas
-      ? "gallery-atlas-spotlight__grid"
-      : "gallery-spotlight__grid";
-    container.innerHTML =
-      label +
-      '<div class="' +
-      gridClass +
-      '">' +
-      items
-        .map((g, i) => {
-          let html = galleryTileHtml(g, i, "spotlight", isPageAtlas);
-          if (!isPageAtlas) {
-            html = html.replace(" reveal", " gallery-spotlight__tile reveal");
-          }
-          return html;
-        })
-        .join("") +
-      "</div>";
-    bindLightboxGroup(container, "spotlight", items);
     window.PatelReveal?.();
   }
 
@@ -504,35 +528,44 @@
     const sections = SITE.gallerySections;
     const isPageAtlas = container.classList.contains("gallery-page-sections");
     if (sections?.length) {
-      container.innerHTML = sections
-        .map((section, sectionIndex) => {
-          const tiles = section.items
-            .map((g, i) => galleryTileHtml(g, i, section.id, isPageAtlas))
-            .join("");
-          const theme = GALLERY_SECTION_THEMES[section.id] || "";
-          const sectionNum = String(sectionIndex + 1).padStart(2, "0");
-          if (isPageAtlas) {
-            return (
-              '<section class="gallery-atlas-section reveal ' +
-              theme +
-              '" id="' +
-              section.id +
-              '"><header class="gallery-atlas-section__head"><span class="gallery-atlas-section__index" aria-hidden="true">' +
-              sectionNum +
-              '</span><div><h2>' +
-              section.title +
-              "</h2>" +
-              (section.subtitle ? "<p>" + section.subtitle + "</p>" : "") +
-              '</div><span class="gallery-atlas-section__count">' +
-              section.items.length +
-              ' photos</span></header><div class="gallery-atlas-masonry gallery-masonry" data-gallery-group="' +
-              section.id +
-              '">' +
-              tiles +
-              "</div></section>"
-            );
-          }
-          return (
+      if (isPageAtlas && !galleryReservedSrc) {
+        resetGalleryReserved();
+        heroMosaicItems().forEach((g) => reserveGallerySrc(g.src));
+      }
+
+      const built = sections.map((section, sectionIndex) => {
+        const items = isPageAtlas ? dedupeGalleryItems(section.items) : section.items;
+        const tiles = items
+          .map((g, i) => galleryTileHtml(g, i, section.id, isPageAtlas))
+          .join("");
+        const theme = GALLERY_SECTION_THEMES[section.id] || "";
+        const sectionNum = String(sectionIndex + 1).padStart(2, "0");
+        const pharmacyClass = section.id === "homoeopathy" ? " gallery-atlas-section--pharmacy-muted" : "";
+        let html = "";
+        if (isPageAtlas) {
+          html =
+            '<section class="gallery-atlas-section reveal ' +
+            theme +
+            pharmacyClass +
+            '" id="' +
+            section.id +
+            '"><header class="gallery-atlas-section__head"><span class="gallery-atlas-section__index" aria-hidden="true">' +
+            sectionNum +
+            '</span><div><h2>' +
+            section.title +
+            "</h2>" +
+            (section.subtitle ? "<p>" + section.subtitle + "</p>" : "") +
+            '</div><span class="gallery-atlas-section__count">' +
+            items.length +
+            ' photos</span></header><div class="gallery-atlas-masonry gallery-atlas-masonry--corporate gallery-masonry' +
+            (section.id === "homoeopathy" ? " gallery-atlas-masonry--pharmacy" : "") +
+            '" data-gallery-group="' +
+            section.id +
+            '">' +
+            tiles +
+            "</div></section>";
+        } else {
+          html =
             '<section class="gallery-section reveal" id="' +
             section.id +
             '"><header class="gallery-section__head"><h2>' +
@@ -543,14 +576,16 @@
             section.id +
             '">' +
             tiles +
-            "</div></section>"
-          );
-        })
-        .join("");
+            "</div></section>";
+        }
+        return { id: section.id, items, html };
+      });
 
-      sections.forEach((section) => {
-        const group = container.querySelector('[data-gallery-group="' + section.id + '"]');
-        if (group) bindLightboxGroup(group, section.id, section.items);
+      container.innerHTML = built.map((b) => b.html).join("");
+
+      built.forEach(({ id, items }) => {
+        const group = container.querySelector('[data-gallery-group="' + id + '"]');
+        if (group) bindLightboxGroup(group, id, items);
       });
       window.PatelReveal?.();
       return;
@@ -570,8 +605,10 @@
     if (!container || !SITE.reviewVideos?.length) return;
     const isTestimonialsPage = container.classList.contains("testimonials-video-showcase");
     const isGalleryShowcase = container.classList.contains("gallery-video-showcase");
-    const eagerCount = isTestimonialsPage ? 4 : isGalleryShowcase ? 6 : 2;
-    const videos = SITE.reviewVideos;
+    const maxAttr = parseInt(container.dataset.galleryVideosMax, 10);
+    const galleryMax = isGalleryShowcase && maxAttr > 0 ? maxAttr : isGalleryShowcase ? 3 : 0;
+    const eagerCount = isTestimonialsPage ? 4 : isGalleryShowcase ? Math.min(galleryMax, 3) : 2;
+    const videos = galleryMax ? SITE.reviewVideos.slice(0, galleryMax) : SITE.reviewVideos;
     container.innerHTML = videos
       .map((v, i) => {
         const num = String(i + 1).padStart(2, "0");
@@ -714,9 +751,9 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
+    const mosaicEl = document.getElementById("gallery-hero-mosaic");
+    renderGalleryHeroMosaic(mosaicEl);
     renderGalleryHeroFilmstrip(document.getElementById("gallery-hero-filmstrip"));
-    renderGalleryHeroMosaic(document.getElementById("gallery-hero-mosaic"));
-    renderGallerySpotlight(document.getElementById("gallery-spotlight"));
     renderGalleryFilters(document.getElementById("gallery-filters"));
     renderGallery(document.getElementById("gallery-sections"));
     renderGalleryReels(document.getElementById("gallery-reels-grid"));
