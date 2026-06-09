@@ -16,6 +16,7 @@ for f in "$IMG"/pv*.mp4; do
     -c:v libx264 -crf 28 -preset slow \
     -c:a aac -b:a 96k -movflags +faststart \
     "$out"
+  ffmpeg -y -ss 00:00:01 -i "$out" -vframes 1 -q:v 3 "$IMG/optimized/${base}-poster.jpg"
 done
 
-echo "Done. Update SITE.reviewVideos paths in js/site-config.js to images/optimized/ when satisfied."
+echo "Done. Posters saved as images/optimized/pvN-poster.jpg"

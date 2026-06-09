@@ -660,13 +660,16 @@
       });
     });
 
+    const lightboxPayload = videos.map((v) => ({
+      src: v.src,
+      alt: v.alt,
+      type: "video",
+    }));
+
     container.querySelectorAll("[data-video-expand]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        openLightbox(
-          SITE.reviewVideos.map((v) => ({ src: v.src, alt: v.alt, type: "video" })),
-          parseInt(btn.dataset.videoExpand, 10)
-        );
+        openLightbox(lightboxPayload, parseInt(btn.dataset.videoExpand, 10));
       });
     });
     wireLazyVideos(container);

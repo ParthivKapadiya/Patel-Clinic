@@ -527,10 +527,10 @@ SITE.patientPhotos = PATIENT_PHOTO_NUMBERS.map((n) => {
   };
 });
 
-SITE.reviewVideos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14].map((n, i) => ({
+SITE.reviewVideos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14].map((n) => ({
   src: `images/optimized/pv${n}.mp4`,
   alt: "Patient video review — Patel Clinic, Gayatrinagar, Rajkot",
-  poster: SITE.patientPhotos[i % SITE.patientPhotos.length].src,
+  poster: `images/optimized/pv${n}-poster.jpg`,
 }));
 
 SITE.clinicFacilityImages = Array.from({ length: CLINIC_FACILITY_COUNT }, (_, i) => {
