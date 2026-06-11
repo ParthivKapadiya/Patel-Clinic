@@ -6,8 +6,8 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 IMG="$ROOT/images"
 mkdir -p "$IMG/optimized"
 
+shopt -s nullglob
 for f in "$IMG"/pv*.mp4; do
-  [ -f "$f" ] || continue
   base="$(basename "$f" .mp4)"
   out="$IMG/optimized/${base}.mp4"
   echo "→ $base"
@@ -20,3 +20,4 @@ for f in "$IMG"/pv*.mp4; do
 done
 
 echo "Done. Posters saved as images/optimized/pvN-poster.jpg"
+echo "Tip: for batch uploads use ./scripts/add-review-videos.sh"

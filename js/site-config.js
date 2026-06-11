@@ -527,7 +527,7 @@ SITE.patientPhotos = PATIENT_PHOTO_NUMBERS.map((n) => {
   };
 });
 
-SITE.reviewVideos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14].map((n) => ({
+SITE.reviewVideos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22].map((n) => ({
   src: `images/optimized/pv${n}.mp4`,
   alt: "Patient video review — Patel Clinic, Gayatrinagar, Rajkot",
   poster: `images/optimized/pv${n}-poster.jpg`,
