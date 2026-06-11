@@ -3,7 +3,7 @@
     { href: "index.html", label: "Home", id: "home" },
     { href: "about.html", label: "About", id: "about" },
     { href: "services.html", label: "Services", id: "services" },
-    { href: "testimonials.html", label: "Testimonials", id: "testimonials" },
+    { href: "testimonials.html", label: "Review", id: "testimonials" },
     { href: "gallery.html", label: "Gallery", id: "gallery" },
     { href: "faq.html", label: "FAQ", id: "faq" },
     { href: "contact.html", label: "Contact", id: "contact" },

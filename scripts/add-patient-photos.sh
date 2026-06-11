@@ -36,6 +36,9 @@ unset IFS
 filtered=()
 for n in "${sorted[@]}"; do
   [ "$n" = "33" ] && continue
+  # pi44/pi45 are pharmacy product promos — listed in SITE.homoeopathicProducts
+  [ "$n" = "44" ] && continue
+  [ "$n" = "45" ] && continue
   filtered+=("$n")
 done
 

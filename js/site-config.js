@@ -499,6 +499,16 @@ const SITE = {
       name: "SBL Arnica Montana Hair Oil",
       desc: "Fortified hair oil — anti hair fall therapy, 200 ml",
     },
+    {
+      src: "images/pi44.jpeg",
+      name: "Glutatech 600",
+      desc: "Glutathione for injection — trio pack, 600 mg (I.M./I.V.)",
+    },
+    {
+      src: "images/pi45.jpeg",
+      name: "ZIP Hair Care Herb",
+      desc: "Instant ayurvedic hair growth solution — dandruff-free, healthy hair",
+    },
   ],
 };
 
@@ -548,8 +558,6 @@ const PATIENT_PHOTO_NUMBERS = [
   41,
   42,
   43,
-  44,
-  45,
   46,
   47,
   48,
