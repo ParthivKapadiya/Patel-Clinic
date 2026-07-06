@@ -1,7 +1,7 @@
 /** Patel Clinic — official details from signage, business card & flyer */
 /** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
-  assetVersion: "8",
+  assetVersion: "9",
   name: "Patel Clinic",
   /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
   siteUrl: "https://patel-clinic.netlify.app",
@@ -469,6 +469,15 @@ const SITE = {
             desc: "Quick review link — help neighbours choose",
             href: "https://jsdl.in/RSL-SZE1779183796",
             icon: "star",
+            featured: true,
+            cta: "Write a review",
+          },
+          {
+            id: "google-review",
+            label: "Review on Google",
+            desc: "Check us out on Google — rate your visit",
+            href: "https://g.page/r/CUH6HNRLvZlvEBM/review",
+            icon: "google",
             featured: true,
             cta: "Write a review",
           },

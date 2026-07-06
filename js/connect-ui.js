@@ -266,7 +266,7 @@
     const wa = linkById("whatsapp");
     const waHref = wa?.href || SITE.whatsappUrl || "https://wa.me/919978815066";
     const reviewLink = allLinks().find((l) => l.id === "justdial-review");
-    const googleLink = allLinks().find((l) => l.id === "google-profile");
+    const googleLink = allLinks().find((l) => l.id === "google-review");
     const established = SITE.established || 1981;
 
     let reviewBlock = "";
@@ -397,7 +397,7 @@
     }
 
     const reviewLink = allLinks().find((l) => l.id === "justdial-review");
-    const googleLink = allLinks().find((l) => l.id === "google-profile");
+    const googleLink = allLinks().find((l) => l.id === "google-review");
 
     let reviewBanner = "";
     if (reviewLink) {
@@ -446,7 +446,7 @@
 
   function renderReviewCta(container) {
     const link = allLinks().find((l) => l.id === "justdial-review");
-    const google = allLinks().find((l) => l.id === "google-profile");
+    const google = allLinks().find((l) => l.id === "google-review");
     if (!link) return;
     container.className = "connect-review-cta reveal";
     container.innerHTML =
@@ -454,7 +454,7 @@
       '<div class="connect-review-cta__copy">' +
       '<p class="eyebrow eyebrow--light">Loved your visit?</p>' +
       "<h2>Share a quick review — it helps Rajkot families find us</h2>" +
-      "<p>Tap below to rate your experience on JustDial. Your words support both Dr. K. M. Patel and Dr. Hiren K. Patel.</p>" +
+      "<p>Tap below to rate your experience on JustDial or Google. Your words support both Dr. K. M. Patel and Dr. Hiren K. Patel.</p>" +
       '<div class="connect-review-cta__actions">' +
       linkCard(link) +
       (google
