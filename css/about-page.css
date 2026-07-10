@@ -833,3 +833,80 @@ body[data-page="about"] .about-visit__btn--ghost {
     transform: none;
   }
 }
+
+/* Get Well Soon partnership under affiliations */
+body[data-page="about"] .about-story__partnership {
+  margin: 0 0 1.25rem;
+}
+
+body[data-page="about"] .about-story__partnership .partner-tieup {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  box-shadow: 0 10px 24px -18px rgba(12, 18, 34, 0.3);
+}
+
+@media (min-width: 560px) {
+  body[data-page="about"] .about-story__partnership .partner-tieup {
+    grid-template-columns: 150px 1fr;
+  }
+}
+
+body[data-page="about"] .partner-tieup__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+}
+
+body[data-page="about"] .partner-tieup__logo,
+body[data-page="about"] .partner-tieup__brand img {
+  width: min(100%, 150px);
+  height: auto;
+  display: block;
+}
+
+body[data-page="about"] .partner-tieup__eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0c7a7a;
+}
+
+body[data-page="about"] .partner-tieup__copy h3 {
+  margin: 0 0 0.15rem;
+  font-size: 1.15rem;
+  color: var(--navy);
+}
+
+body[data-page="about"] .partner-tieup__tagline {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+body[data-page="about"] .partner-tieup__statement {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #475569;
+}
+
+body[data-page="about"] .partner-tieup__cta {
+  display: inline-flex;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  background: #25d366;
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-decoration: none;
+}

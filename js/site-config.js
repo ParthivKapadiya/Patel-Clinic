@@ -1,7 +1,7 @@
 /** Patel Clinic — official details from signage, business card & flyer */
 /** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
-  assetVersion: "9",
+  assetVersion: "10",
   name: "Patel Clinic",
   /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
   siteUrl: "https://patel-clinic.netlify.app",
@@ -33,6 +33,18 @@ const SITE = {
     "HDFC ERGO Health Adviser",
     "TATA AIA Life Adviser",
     "Panel Doctor — LIC",
+  ],
+  /** Clinical / care partners (logos + tie-up announcements) */
+  partnerships: [
+    {
+      id: "get-well-soon",
+      name: "Get Well Soon",
+      tagline: "Home Health Care & Assisted Living",
+      logo: "images/get-well-soon-logo.png",
+      logoAlt: "Get Well Soon — Home Health Care & Assisted Living logo",
+      statement:
+        "Patel Family Clinic has a tie-up with Get Well Soon Home Healthcare Services for nursing & home care services.",
+    },
   ],
   mapsUrl:
     "https://maps.google.com/maps?q=Patel+Clinic+Radhe+Shyam+Dairy+Gayatrinagar+Rajkot&z=16&output=embed",
@@ -129,7 +141,8 @@ const SITE = {
     {
       id: "home-visit",
       title: "Home Visit & ICU at Home",
-      short: "Home visit available. ICU care at home for patients who need monitored support in familiar surroundings.",
+      short:
+        "Home visit & ICU care at home — supported by our tie-up with Get Well Soon Home Healthcare for nursing & home care services.",
     },
     {
       id: "insurance-panel",
@@ -166,7 +179,7 @@ const SITE = {
       features: [
         "Home visit (call to confirm)",
         "ICU care at home",
-        "Emergency doctor on call",
+        "Nursing & home care via Get Well Soon",
         "WhatsApp coordination",
       ],
     },
@@ -254,6 +267,11 @@ const SITE = {
       category: "visits",
       q: "Do you offer home visits?",
       a: "Yes. Home visit and ICU care at home are available — please call or WhatsApp to confirm availability for your area.",
+    },
+    {
+      category: "visits",
+      q: "Do you provide nursing or home care services?",
+      a: "Yes. Patel Family Clinic has a tie-up with Get Well Soon Home Healthcare Services for nursing and home care. Ask at the clinic or message us on WhatsApp for guidance.",
     },
     {
       category: "booking",

@@ -1118,6 +1118,39 @@
     initReveal();
   }
 
+  function renderPartnerships(container) {
+    if (!container || !SITE.partnerships?.length) return;
+    const cards = SITE.partnerships
+      .map((p) => {
+        const logo = SITE.imgHtml
+          ? SITE.imgHtml(p.logo, {
+              alt: p.logoAlt || p.name,
+              className: "partner-tieup__logo",
+              width: 280,
+              height: 120,
+              loading: "lazy",
+              webp: false,
+            })
+          : `<img src="${p.logo}" alt="${p.logoAlt || p.name}" class="partner-tieup__logo" width="280" height="120" loading="lazy">`;
+        return `
+      <article class="partner-tieup reveal">
+        <div class="partner-tieup__brand">
+          ${logo}
+        </div>
+        <div class="partner-tieup__copy">
+          <p class="partner-tieup__eyebrow">Care partnership</p>
+          <h3>${p.name}</h3>
+          <p class="partner-tieup__tagline">${p.tagline}</p>
+          <p class="partner-tieup__statement">${p.statement}</p>
+          <a href="${waLink("Hello Patel Clinic, I would like details about Get Well Soon nursing & home care services.")}" class="partner-tieup__cta" target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a>
+        </div>
+      </article>`;
+      })
+      .join("");
+    container.innerHTML = cards;
+    initReveal();
+  }
+
   function renderHomeServices(container) {
     if (!container) return;
     const icons = ["🩺", "🌿", "📊", "👶", "💉", "🚨", "🏠", "📋"];
@@ -1236,6 +1269,7 @@
     document.querySelectorAll("#team-grid").forEach((el) => renderTeamGrid(el));
     renderFacilities(document.getElementById("facilities-grid"));
     renderAffiliations(document.getElementById("affiliations"));
+    document.querySelectorAll("[data-partnerships]").forEach((el) => renderPartnerships(el));
     renderHomeServices(document.getElementById("home-services"));
     renderHomePackages(document.getElementById("home-packages"));
     renderHomeStats(document.getElementById("stats-grid"));
