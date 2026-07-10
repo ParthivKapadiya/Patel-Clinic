@@ -47,3 +47,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Flutter web app (local only — not deployed with static site)
+/flutter/
+
+# Local screenshot scratch files
+/review-*.png

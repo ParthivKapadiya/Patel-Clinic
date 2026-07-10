@@ -1100,6 +1100,7 @@
       container.classList.contains("about-partners");
     container.innerHTML = SITE.affiliations
       .map((a, i) => {
+        const isLic = a.includes("LIC");
         const short = a.includes("LIC") && a.includes("Authorized")
           ? "LIC Panel"
           : a.includes("HDFC")
@@ -1110,7 +1111,13 @@
                 ? "Panel Doctor"
                 : a;
         if (isAtlas) {
-          return `<span class="atlas-partner${i === 0 ? " atlas-partner--featured" : ""}">${short}</span>`;
+          const logo = isLic
+            ? '<img src="images/lic-logo.svg" alt="LIC — Life Insurance Corporation of India" class="atlas-partner__logo" width="96" height="48" loading="lazy">'
+            : "";
+          return `<span class="atlas-partner${i === 0 || isLic ? " atlas-partner--featured" : ""}${isLic ? " atlas-partner--logo" : ""}">${logo}<span>${short}</span></span>`;
+        }
+        if (isLic) {
+          return `<span class="affiliation-tag affiliation-tag--luxury affiliation-tag--logo"><img src="images/lic-logo.svg" alt="LIC" width="80" height="40" loading="lazy"> ${a}</span>`;
         }
         return `<span class="affiliation-tag affiliation-tag--luxury">${a}</span>`;
       })

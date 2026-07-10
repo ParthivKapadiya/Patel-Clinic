@@ -153,3 +153,85 @@ body[data-page="home"] .atlas-panel--partner {
   transform: translateY(-1px);
   box-shadow: 0 10px 20px -12px rgba(37, 211, 102, 0.9);
 }
+
+/* LIC logo in insurance panel — large featured block */
+body[data-page="home"] .philosophy-atlas__lic {
+  display: grid;
+  gap: 0.75rem;
+  align-items: center;
+  margin: 0 0 0.85rem;
+  padding: 0.85rem;
+  border-radius: 0.85rem;
+  background: #fff;
+  border: 1px solid rgba(201, 169, 98, 0.45);
+  box-shadow: 0 10px 24px -16px rgba(0, 0, 0, 0.45);
+}
+
+@media (min-width: 420px) {
+  body[data-page="home"] .philosophy-atlas__lic {
+    grid-template-columns: minmax(140px, 1.1fr) 1fr;
+    gap: 1rem;
+  }
+}
+
+body[data-page="home"] .philosophy-atlas__lic img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+body[data-page="home"] .philosophy-atlas__lic-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+@media (min-width: 420px) {
+  body[data-page="home"] .philosophy-atlas__lic-copy {
+    text-align: left;
+  }
+}
+
+body[data-page="home"] .philosophy-atlas__lic-copy strong {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: #0c1222;
+  letter-spacing: 0.02em;
+}
+
+body[data-page="home"] .philosophy-atlas__lic-copy span {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #475569;
+}
+
+/* Keep chip styles for remaining partners */
+body[data-page="home"] .philosophy-atlas__partner--logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem 0.4rem 0.45rem;
+  background: #fff !important;
+  border-color: rgba(201, 169, 98, 0.55) !important;
+  color: var(--navy, #0c1222) !important;
+}
+
+body[data-page="home"] .philosophy-atlas__partner--logo img {
+  width: 88px;
+  height: auto;
+  max-height: 44px;
+  object-fit: contain;
+  border-radius: 0.25rem;
+  background: #fff;
+}
+
+body[data-page="home"] .philosophy-atlas__partner--logo span {
+  font-size: 0.625rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
