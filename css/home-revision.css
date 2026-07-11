@@ -235,3 +235,168 @@ body[data-page="home"] .philosophy-atlas__partner--logo span {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+/* Free Wednesday consultation camp */
+body[data-page="home"] .home-atlas--free-camp {
+  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  background:
+    radial-gradient(ellipse 70% 60% at 100% 0%, rgba(12, 122, 122, 0.08), transparent 55%),
+    linear-gradient(180deg, #f7f4ef 0%, #eef6f4 100%);
+}
+
+body[data-page="home"] .free-camp__inner {
+  display: grid;
+  gap: 1.75rem;
+  align-items: center;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border-radius: 1.35rem;
+  background: #fff;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+  box-shadow: 0 22px 48px -30px rgba(12, 18, 34, 0.4);
+}
+
+@media (min-width: 860px) {
+  body[data-page="home"] .free-camp__inner {
+    grid-template-columns: 1.15fr minmax(220px, 0.75fr);
+    gap: 2rem;
+  }
+}
+
+body[data-page="home"] .free-camp__eyebrow {
+  margin: 0 0 0.45rem;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #0c7a7a;
+}
+
+body[data-page="home"] .free-camp__copy h2 {
+  margin: 0 0 0.45rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  line-height: 1.15;
+  color: var(--navy, #0c1222);
+}
+
+body[data-page="home"] .free-camp__gu {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #b42318;
+}
+
+body[data-page="home"] .free-camp__lead {
+  margin: 0 0 1rem;
+  color: #475569;
+  line-height: 1.55;
+}
+
+body[data-page="home"] .free-camp__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+body[data-page="home"] .free-camp__pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  background: #f1f5f9;
+  color: #0c1222;
+  border: 1px solid rgba(12, 18, 34, 0.08);
+}
+
+body[data-page="home"] .free-camp__pill--free {
+  background: linear-gradient(135deg, #0c7a7a, #0a5f5f);
+  color: #fff;
+  border-color: transparent;
+}
+
+body[data-page="home"] .free-camp__note {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
+body[data-page="home"] .free-camp__list {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+body[data-page="home"] .free-camp__list li {
+  position: relative;
+  padding-left: 1.35rem;
+  font-size: 0.9375rem;
+  color: #1e293b;
+  line-height: 1.45;
+}
+
+body[data-page="home"] .free-camp__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #0c7a7a;
+}
+
+body[data-page="home"] .free-camp__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+body[data-page="home"] .free-camp__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body[data-page="home"] .free-camp__btn:hover {
+  transform: translateY(-1px);
+}
+
+body[data-page="home"] .free-camp__btn--wa {
+  background: #25d366;
+  color: #fff;
+}
+
+body[data-page="home"] .free-camp__btn--call {
+  background: #0c1222;
+  color: #fff;
+}
+
+body[data-page="home"] .free-camp__visual {
+  margin: 0;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #f8fafc;
+  border: 1px solid rgba(12, 18, 34, 0.06);
+}
+
+body[data-page="home"] .free-camp__poster,
+body[data-page="home"] .free-camp__visual img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 560px;
+}

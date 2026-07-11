@@ -1,7 +1,7 @@
 /** Patel Clinic — official details from signage, business card & flyer */
 /** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
-  assetVersion: "10",
+  assetVersion: "11",
   name: "Patel Clinic",
   /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
   siteUrl: "https://patel-clinic.netlify.app",
@@ -28,6 +28,25 @@ const SITE = {
   rating: 4.9,
   ratingCount: 320,
   established: 1981,
+  /** Community charity — free physician consultation every Wednesday morning */
+  freeCamp: {
+    title: "Every Wednesday — free physician consultation",
+    gujaratiTitle: "દર બુધવારે ફ્રી નિદાન કેમ્પ",
+    subtitle: "Free health consultation camp for all citizens",
+    day: "Wednesday",
+    time: "9:30 AM – 12:30 PM",
+    highlight: "Physician consultation is free",
+    poster: "images/free-wednesday-camp.jpg",
+    posterAlt: "Patel Clinic free diagnosis camp poster — every Wednesday 9:30 AM to 12:30 PM",
+    includes: [
+      "General physician checkup",
+      "Blood pressure checkup",
+      "Blood sugar checkup",
+      "Guidance on diabetes, BP, thyroid & fever",
+      "Medicine & lifestyle advice",
+    ],
+    note: "A community charity initiative by Patel Clinic — walk in during camp hours; no appointment fee for physician consultation.",
+  },
   affiliations: [
     "LIC — Authorized Medical Officer",
     "HDFC ERGO Health Adviser",
@@ -51,7 +70,7 @@ const SITE = {
   hours: [
     { day: "Monday", hours: "10:00 AM – 2:00 PM | 5:00 PM – 10:00 PM" },
     { day: "Tuesday", hours: "10:00 AM – 2:00 PM | 5:00 PM – 10:00 PM" },
-    { day: "Wednesday", hours: "10:00 AM – 2:00 PM | 5:00 PM – 10:00 PM" },
+    { day: "Wednesday", hours: "Free camp 9:30 AM – 12:30 PM · OPD 10:00 AM – 2:00 PM | 5:00 PM – 10:00 PM" },
     { day: "Thursday", hours: "10:00 AM – 2:00 PM | 5:00 PM – 10:00 PM" },
     { day: "Friday", hours: "10:00 AM – 2:00 PM | 5:00 PM – 10:00 PM" },
     { day: "Saturday", hours: "10:00 AM – 2:00 PM | 5:00 PM – 10:00 PM" },
@@ -281,12 +300,17 @@ const SITE = {
     {
       category: "booking",
       q: "What are your clinic hours?",
-      a: "Monday–Saturday: 10:00 AM – 2:00 PM and 5:00 PM – 10:00 PM. Sunday: 10:00 AM – 2:00 PM only. Emergency calls are answered on the doctor mobiles listed on our Contact page.",
+      a: "Monday–Saturday: 10:00 AM – 2:00 PM and 5:00 PM – 10:00 PM. Sunday: 10:00 AM – 2:00 PM only. Every Wednesday morning we also run a free physician consultation camp from 9:30 AM to 12:30 PM. Emergency calls are answered on the doctor mobiles listed on our Contact page.",
+    },
+    {
+      category: "booking",
+      q: "Is there a free consultation camp?",
+      a: "Yes. Every Wednesday from 9:30 AM to 12:30 PM, Patel Clinic offers a free physician consultation camp — general checkup, BP, blood sugar guidance, and lifestyle advice. It is a community charity initiative; all citizens are welcome.",
     },
     {
       category: "booking",
       q: "Are consultation fees shared before treatment?",
-      a: "Yes. OPD, procedure and package fees are explained upfront. For care plans and packages, enquire on WhatsApp or at the front desk before your visit.",
+      a: "Yes. OPD, procedure and package fees are explained upfront. For care plans and packages, enquire on WhatsApp or at the front desk before your visit. Note: every Wednesday 9:30 AM–12:30 PM physician consultation at the free camp is free of charge.",
     },
     {
       category: "visits",

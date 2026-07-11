@@ -1158,6 +1158,71 @@
     initReveal();
   }
 
+  function renderFreeCamp(container) {
+    const camp = SITE.freeCamp;
+    if (!container || !camp) return;
+    const includes = (camp.includes || [])
+      .map((item) => `<li>${item}</li>`)
+      .join("");
+    const poster = SITE.imgHtml
+      ? SITE.imgHtml(camp.poster, {
+          alt: camp.posterAlt || camp.title,
+          className: "free-camp__poster",
+          width: 480,
+          height: 820,
+          loading: "lazy",
+          webp: false,
+        })
+      : `<img src="${camp.poster}" alt="${camp.posterAlt || camp.title}" class="free-camp__poster" width="480" height="820" loading="lazy">`;
+
+    container.className = "free-camp reveal";
+    container.innerHTML =
+      '<div class="free-camp__inner">' +
+      '<div class="free-camp__copy">' +
+      '<p class="free-camp__eyebrow">Community charity</p>' +
+      "<h2 id=\"free-camp-heading\">" +
+      camp.title +
+      "</h2>" +
+      (camp.gujaratiTitle
+        ? '<p class="free-camp__gu">' + camp.gujaratiTitle + "</p>"
+        : "") +
+      "<p class=\"free-camp__lead\">" +
+      camp.subtitle +
+      "</p>" +
+      '<div class="free-camp__meta">' +
+      '<span class="free-camp__pill free-camp__pill--free">' +
+      camp.highlight +
+      "</span>" +
+      '<span class="free-camp__pill">' +
+      camp.day +
+      " · " +
+      camp.time +
+      "</span>" +
+      "</div>" +
+      "<p class=\"free-camp__note\">" +
+      camp.note +
+      "</p>" +
+      '<ul class="free-camp__list" aria-label="Camp includes">' +
+      includes +
+      "</ul>" +
+      '<div class="free-camp__actions">' +
+      '<a href="' +
+      waLink(
+        "Hello Patel Clinic, I would like to visit the free Wednesday consultation camp (9:30 AM – 12:30 PM)."
+      ) +
+      '" class="free-camp__btn free-camp__btn--wa" target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a>' +
+      '<a href="tel:' +
+      SITE.phoneTel +
+      '" class="free-camp__btn free-camp__btn--call">Call ' +
+      SITE.phoneDisplay +
+      "</a>" +
+      "</div></div>" +
+      '<figure class="free-camp__visual">' +
+      poster +
+      "</figure></div>";
+    initReveal();
+  }
+
   function renderHomeServices(container) {
     if (!container) return;
     const icons = ["🩺", "🌿", "📊", "👶", "💉", "🚨", "🏠", "📋"];
@@ -1277,6 +1342,7 @@
     renderFacilities(document.getElementById("facilities-grid"));
     renderAffiliations(document.getElementById("affiliations"));
     document.querySelectorAll("[data-partnerships]").forEach((el) => renderPartnerships(el));
+    document.querySelectorAll("[data-free-camp]").forEach((el) => renderFreeCamp(el));
     renderHomeServices(document.getElementById("home-services"));
     renderHomePackages(document.getElementById("home-packages"));
     renderHomeStats(document.getElementById("stats-grid"));
