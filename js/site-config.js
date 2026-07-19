@@ -1,13 +1,13 @@
 /** Patel Clinic — official details from signage, business card & flyer */
 /** Bump when deploying so browsers fetch fresh JS/CSS (see ?v= in HTML). */
 const SITE = {
-  assetVersion: "11",
+  assetVersion: "12",
   name: "Patel Clinic",
   /** Production URL — run: ./scripts/set-site-url.sh https://www.your-domain.com */
   siteUrl: "https://patel-clinic.netlify.app",
-  ogImage: "images/patel2.jpeg",
+  ogImage: "images/patel-clinic-logo.png",
   geo: { lat: 22.3039, lng: 70.8022 },
-  logo: "images/patel2.jpeg",
+  logo: "images/patel-clinic-logo.png",
   heroImage: "images/patel4.jpeg",
   tagline: "Family physician & homeopathic care in Gayatrinagar — full-time OPD & emergency.",
   address:
@@ -87,8 +87,8 @@ const SITE = {
     },
     {
       id: "logo",
-      src: "images/patel2.jpeg",
-      alt: "Patel Clinic official logo",
+      src: "images/patel-clinic-logo.png",
+      alt: "Patel Family Clinic official logo",
       title: "Patel Clinic logo",
       caption: "Official branding used across signage, stationery, and our digital presence.",
     },
@@ -648,8 +648,8 @@ SITE.clinicFacilityImages = Array.from({ length: CLINIC_FACILITY_COUNT }, (_, i)
 SITE.officialGallery = [
   ...SITE.clinicImages,
   {
-    src: "images/logo.png",
-    alt: "Patel Clinic logo artwork",
+    src: "images/patel-clinic-logo.png",
+    alt: "Patel Family Clinic logo artwork",
     title: "Clinic logo",
     caption: "Branding used on signage and stationery.",
   },
@@ -747,7 +747,7 @@ SITE.pageHeroes = {
     crumb: "Contact",
   },
   testimonials: {
-    image: "images/patel2.jpeg",
+    image: "images/patel4.jpeg",
     imageAlt: "Patel Clinic — patient trust",
     pill: "4.9★ · Trusted in Rajkot",
     title: "Stories that speak ",
@@ -809,6 +809,7 @@ SITE.hasWebp = function hasWebp(src) {
   if (/images\/pi\d/i.test(src)) return true;
   if (/images\/clinic[-.]/i.test(src)) return true;
   if (src.indexOf("images/logo.png") !== -1) return true;
+  if (src.indexOf("images/patel-clinic-logo.png") !== -1) return true;
   return false;
 };
 

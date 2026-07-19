@@ -131,10 +131,10 @@
 .logo__frame {
   position: relative;
   flex-shrink: 0;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  padding: 2px;
+  width: 8.25rem;
+  height: 4.25rem;
+  border-radius: 0.65rem;
+  padding: 3px;
   background: linear-gradient(135deg, var(--gold) 0%, #e8d4b8 45%, #8b6914 100%);
   box-shadow: 0 4px 16px -4px rgba(184, 149, 108, 0.45);
   transition: box-shadow 0.35s ease, transform 0.35s ease;
@@ -147,8 +147,10 @@
 .logo__frame img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
+  border-radius: 0.5rem;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
   border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
@@ -157,6 +159,7 @@
   flex-direction: column;
   gap: 0.1rem;
   min-width: 0;
+  position: relative;
 }
 
 .logo__establish {
@@ -168,16 +171,17 @@
   line-height: 1;
 }
 
+/* Wordmark logo already includes the clinic name — keep for a11y only */
 .logo__copy strong {
-  font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: var(--navy);
-  white-space: nowrap;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .logo__location {
@@ -188,10 +192,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.site-header--home:not(.scrolled) .logo__copy strong {
-  color: #fff;
 }
 
 .site-header--home:not(.scrolled) .logo__location {
@@ -575,12 +575,13 @@ body.header-menu-open {
 }
 
 @media (max-width: 1099px) {
-  .logo__establish {
-    display: none;
+  .logo__frame {
+    width: 6.75rem;
+    height: 3.5rem;
   }
 
-  .logo__copy strong {
-    font-size: 1rem;
+  .logo__establish {
+    display: none;
   }
 
   .logo__location {
@@ -1398,10 +1399,10 @@ body.lightbox-open {
 
 .footer-crown__logo-frame {
   flex-shrink: 0;
-  width: 3.5rem;
-  height: 3.5rem;
-  padding: 2px;
-  border-radius: 50%;
+  width: 9rem;
+  height: 4.65rem;
+  padding: 3px;
+  border-radius: 0.65rem;
   background: linear-gradient(135deg, var(--crown-gold, var(--gold)) 0%, #e8d4b8 45%, #8b6914 100%);
   box-shadow: 0 6px 20px -6px rgba(201, 169, 98, 0.45);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
@@ -1410,8 +1411,10 @@ body.lightbox-open {
 .footer-crown__logo-frame img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
+  border-radius: 0.5rem;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
   border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -1420,6 +1423,7 @@ body.lightbox-open {
   flex-direction: column;
   gap: 0.12rem;
   min-width: 0;
+  position: relative;
 }
 
 .footer-crown__establish {
@@ -1432,12 +1436,15 @@ body.lightbox-open {
 }
 
 .footer-crown__logo-copy strong {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #fff;
-  line-height: 1.1;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .footer-crown__logo-copy span:last-child {

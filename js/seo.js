@@ -212,7 +212,7 @@
       meta.description;
     const pagePath = meta.path || (key === "home" ? "index.html" : key + ".html");
     const url = absoluteUrl(pagePath);
-    const image = absoluteUrl(SITE.ogImage || SITE.logo || "images/patel2.jpeg");
+    const image = absoluteUrl(SITE.ogImage || SITE.logo || "images/patel-clinic-logo.png");
 
     if (titleEl && !titleEl.textContent.trim()) titleEl.textContent = meta.title;
     upsertMeta("name", "description", docDesc);

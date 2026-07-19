@@ -9,7 +9,7 @@
     { href: "contact.html", label: "Contact", id: "contact" },
   ];
 
-  const LOGO_IMG = () => SITE.logo || "images/patel2.jpeg";
+  const LOGO_IMG = () => SITE.logo || "images/patel-clinic-logo.png";
 
   /** Search index built when FAQ list renders (question + answer, lowercased) */
   const faqSearchTexts = [];
@@ -43,7 +43,7 @@
       <div class="container header-shell">
         <a href="index.html" class="logo logo--luxury">
           <span class="logo__frame">
-            <img src="${LOGO_IMG()}" alt="${SITE.name}" width="48" height="48" loading="eager">
+            <img src="${LOGO_IMG()}" alt="${SITE.name}" width="140" height="72" loading="eager">
           </span>
           <span class="logo__copy">
             <span class="logo__establish">Est. ${established}</span>
@@ -99,7 +99,7 @@
             <div class="footer-crown__brand">
               <a href="index.html" class="footer-crown__logo">
                 <span class="footer-crown__logo-frame">
-                  <img src="${LOGO_IMG()}" alt="${SITE.name}" width="56" height="56" loading="lazy">
+                  <img src="${LOGO_IMG()}" alt="${SITE.name}" width="160" height="84" loading="lazy">
                 </span>
                 <span class="footer-crown__logo-copy">
                   <span class="footer-crown__establish">Est. ${established}</span>
@@ -759,7 +759,7 @@
       document.head.appendChild(link);
     }
     link.href = SITE.logo;
-    link.type = "image/jpeg";
+    link.type = "image/png";
   }
 
   window.PatelReveal = initReveal;
@@ -932,7 +932,7 @@
           '<article class="' +
           cardClass +
           '"><div class="contact-doctor-card__photo"><img src="' +
-          (m.image || "images/patel2.jpeg") +
+          (m.image || "images/patel4.jpeg") +
           '" alt="' +
           m.name +
           '" loading="lazy" width="200" height="200"></div><div class="contact-doctor-card__body"><p class="contact-doctor-card__eyebrow">Direct line</p><h3>' +
