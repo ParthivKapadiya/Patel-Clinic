@@ -76,6 +76,25 @@
     0 8px 28px -6px rgba(184, 149, 108, 0.5);
 }
 
+@media (max-width: 1099px) {
+  .site-header--prestige .logo__frame {
+    width: 5.5rem;
+    height: 2.85rem;
+    padding: 2px;
+    border-radius: 0.45rem;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.12),
+      0 4px 14px -4px rgba(184, 149, 108, 0.4);
+  }
+}
+
+@media (max-width: 639px) {
+  .site-header--prestige .logo__frame {
+    width: 4.75rem;
+    height: 2.45rem;
+  }
+}
+
 .site-header--prestige .nav-links--luxury {
   padding: 0.4rem 0.6rem;
   gap: 0.05rem;

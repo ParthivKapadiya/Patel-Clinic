@@ -94,19 +94,43 @@ body:not([data-page="home"]) main {
     padding-right: 0.65rem;
   }
 
+  /* Beat .site-header--prestige .logo__frame (crown) so wordmark fits the bar */
+  .site-header--prestige .logo__frame,
   .logo__frame {
-    width: 6.25rem;
-    height: 3.25rem;
+    width: 5.5rem;
+    height: 2.85rem;
+    padding: 2px;
+    border-radius: 0.45rem;
   }
 
-  .logo__copy strong {
-    font-size: 0.9375rem !important;
+  .site-header--prestige .logo__frame img,
+  .logo__frame img {
+    border-radius: 0.35rem;
+    border-width: 1px;
+  }
+
+  .logo__copy {
+    display: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .site-header--prestige .logo__frame,
+  .logo__frame {
+    width: 4.75rem;
+    height: 2.45rem;
   }
 }
 
 @media (max-width: 380px) {
   .logo__tagline {
     display: none;
+  }
+
+  .site-header--prestige .logo__frame,
+  .logo__frame {
+    width: 4.25rem;
+    height: 2.2rem;
   }
 }
 

@@ -575,9 +575,12 @@ body.header-menu-open {
 }
 
 @media (max-width: 1099px) {
+  .site-header--prestige .logo__frame,
   .logo__frame {
-    width: 6.75rem;
-    height: 3.5rem;
+    width: 5.5rem;
+    height: 2.85rem;
+    padding: 2px;
+    border-radius: 0.45rem;
   }
 
   .logo__establish {
